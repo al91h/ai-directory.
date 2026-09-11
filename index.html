@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - دليل الذكاء الاصطناعي</title>
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #ec4899;
+            --bg-color: #050505;
+            --card-bg: #141414;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-color: #262626;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .auth-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 35px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+            font-size: 24px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .social-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            background: #ffffff;
+            color: #1f2937;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .social-btn:hover {
+            background: #f3f4f6;
+            transform: translateY(-1px);
+        }
+
+        .divider {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: var(--border-color);
+        }
+        .divider::before { right: 0; }
+        .divider::after { left: 0; }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-main);
+            outline: none;
+            font-size: 14px;
+        }
+
+        .input-field:focus {
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .toggle-form span {
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .back-link:hover { color: var(--text-main); }
+    </style>
+</head>
+<body>
+
+    <div class="auth-card">
+        <h2 id="form-title">تسجيل الدخول</h2>
+
+        <div class="social-btns">
+            <button class="social-btn" id="google-login">
+                <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.14C3.15 21.32 7.23 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.62H1.18C.43 8.13 0 9.87 0 12s.43 3.87 1.18 5.38l4.09-3.14z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.23 0 3.15 2.68 1.18 6.62l4.09 3.14c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+                متابعة بواسطة Google
+            </button>
+        </div>
+
+        <div class="divider">أو بالطريقة العادية</div>
+
+        <form id="email-auth-form">
+            <div class="input-group" id="name-group" style="display: none;">
+                <label>الاسم الكامل</label>
+                <input type="text" id="full-name" class="input-field" placeholder="ادخل اسمك">
+            </div>
+            <div class="input-group">
+                <label>البريد الإلكتروني</label>
+                <input type="email" id="email" class="input-field" required placeholder="name@example.com">
+            </div>
+            <div class="input-group">
+                <label>كلمة المرور</label>
+                <input type="password" id="password" class="input-field" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="submit-btn" id="submit-action-btn">دخول</button>
+        </form>
+
+        <div class="toggle-form">
+            <span id="toggle-text">ليس لديك حساب؟ سجل الآن</span>
+        </div>
+
+        <a href="index.html" class="back-link">العودة إلى الرئيسية ←</a>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBILHh_7OlyiM4EfV1Cw0y2QEhAZgrIaKw",
+            authDomain: "ai-directory-a1650.firebaseapp.com",
+            projectId: "ai-directory-a1650",
+            storageBucket: "ai-directory-a1650.firebasestorage.app",
+            messagingSenderId: "1097261050060",
+            appId: "1:1097261050060:web:2ebfab4c850b7be266fa69",
+            measurementId: "G-PSM5Y3YBKT"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        
+        let isSignUp = false;
+        const formTitle = document.getElementById('form-title');
+        const nameGroup = document.getElementById('name-group');
+        const submitBtn = document.getElementById('submit-action-btn');
+        const toggleText = document.getElementById('toggle-text');
+        const authForm = document.getElementById('email-auth-form');
+
+        toggleText.addEventListener('click', () => {
+            isSignUp = !isSignUp;
+            if(isSignUp) {
+                formTitle.innerText = "إنشاء حساب جديد";
+                nameGroup.style.display = 'block';
+                submitBtn.innerText = "تسجيل";
+                toggleText.innerText = "لديك حساب بالفعل؟ سجل دخولك";
+            } else {
+                formTitle.innerText = "تسجيل الدخول";
+                nameGroup.style.display = 'none';
+                submitBtn.innerText = "دخول";
+                toggleText.innerText = "ليس لديك حساب؟ سجل الآن";
+            }
+        });
+
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const name = document.getElementById('full-name').value;
+
+            if(isSignUp) {
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        updateProfile(userCredential.user, { displayName: name }).then(() => {
+                            alert("تم إنشاء الحساب بنجاح!");
+                            window.location.href = "index.html";
+                        });
+                    })
+                    .catch((error) => { alert(error.message); });
+            } else {
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        alert("تم تسجيل الدخول بنجاح!");
+                        window.location.href = "index.html";
+                    })
+                    .catch((error) => { alert("خطأ في البيانات: " + error.message); });
+            }
+        });
+
+        document.getElementById('google-login').addEventListener('click', () => {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider).then(() => {
+                window.location.href = "index.html";
+            }).catch(err => alert(err.message));
+        });
+    </script>
+</body>
+</html>

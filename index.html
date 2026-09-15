@@ -240,23 +240,8 @@
         </div>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBILHh_7OlyiM4EfV1Cw0y2QEhAZgrIaKw",
-            authDomain: "ai-directory-a1650.firebaseapp.com",
-            projectId: "ai-directory-a1650",
-            storageBucket: "ai-directory-a1650.firebasestorage.app",
-            messagingSenderId: "1097261050060",
-            appId: "1:1097261050060:web:2ebfab4c850b7be266fa69",
-            measurementId: "G-PSM5Y3YBKT"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
+    <!-- السكريبت الأول: خاص بواجهة الموقع والكبسات (يشتغل فوراً) -->
+    <script>
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         const loginModal = document.getElementById('login-modal');
@@ -265,23 +250,24 @@
         const aboutModal = document.getElementById('about-modal');
         const openAboutBtn = document.getElementById('open-about-modal');
         const closeAboutBtn = document.getElementById('close-about-modal');
-        const userAuthArea = document.getElementById('user-auth-area');
-        let toolCards = document.querySelectorAll('.tool-card');
 
+        // كبسة القائمة الجانبية
         document.addEventListener('click', (e) => {
             if (sidebar.classList.contains('open-sidebar') && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
                 sidebar.classList.remove('open-sidebar');
             }
         });
-
         menuToggle.addEventListener('click', () => sidebar.classList.toggle('open-sidebar'));
         
+        // النوافذ المنبثقة
         if(openLoginBtn) openLoginBtn.addEventListener('click', () => loginModal.classList.add('active'));
         if(closeLoginBtn) closeLoginBtn.addEventListener('click', () => loginModal.classList.remove('active'));
         if(openAboutBtn) openAboutBtn.addEventListener('click', () => aboutModal.classList.add('active'));
         if(closeAboutBtn) closeAboutBtn.addEventListener('click', () => aboutModal.classList.remove('active'));
 
+        // الفلترة
         const filterItems = document.querySelectorAll('#filter-list li');
+        let toolCards = document.querySelectorAll('.tool-card');
         filterItems.forEach(item => {
             item.addEventListener('click', () => {
                 filterItems.forEach(i => i.classList.remove('active'));
@@ -299,6 +285,7 @@
             });
         });
 
+        // البحث
         const searchBar = document.getElementById('search-bar');
         if (searchBar) {
             searchBar.addEventListener('input', (e) => {
@@ -310,6 +297,52 @@
                 });
             });
         }
+
+        // تبديل بين تسجيل الدخول وإنشاء حساب
+        let isSignUp = false;
+        const authModalTitle = document.getElementById('auth-modal-title');
+        const nameGroup = document.getElementById('name-group');
+        const submitBtn = document.getElementById('submit-action-btn');
+        const toggleText = document.getElementById('toggle-text');
+        
+        if(toggleText) {
+            toggleText.addEventListener('click', () => {
+                isSignUp = !isSignUp;
+                if(isSignUp) {
+                    authModalTitle.innerText = "إنشاء حساب جديد";
+                    nameGroup.style.display = 'block';
+                    submitBtn.innerText = "تسجيل";
+                    toggleText.innerText = "لديك حساب بالفعل؟ سجل دخولك";
+                } else {
+                    authModalTitle.innerText = "تسجيل الدخول";
+                    nameGroup.style.display = 'none';
+                    submitBtn.innerText = "دخول";
+                    toggleText.innerText = "ليس لديك حساب؟ سجل الآن";
+                }
+            });
+        }
+    </script>
+
+    <!-- السكريبت الثاني: خاص بتسجيل الدخول وقاعدة البيانات -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBILHh_7OlyiM4EfV1Cw0y2QEhAZgrIaKw",
+            authDomain: "ai-directory-a1650.firebaseapp.com",
+            projectId: "ai-directory-a1650",
+            storageBucket: "ai-directory-a1650.firebasestorage.app",
+            messagingSenderId: "1097261050060",
+            appId: "1:1097261050060:web:2ebfab4c850b7be266fa69",
+            measurementId: "G-PSM5Y3YBKT"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const userAuthArea = document.getElementById('user-auth-area');
+        const loginModal = document.getElementById('login-modal');
+        const aboutModal = document.getElementById('about-modal');
 
         setPersistence(auth, browserLocalPersistence).then(() => {
             onAuthStateChanged(auth, (user) => {
@@ -329,8 +362,44 @@
             });
         });
 
-        let isSignUp = false;
-        const authModalTitle = document.getElementById('auth-modal-title');
-        const nameGroup = document.getElementById('name-group');
-        const submitBtn = document.getElementById('submit-action-btn');
-        const toggleText = document.getElementById('toggle-tex
+        const authForm = document.getElementById('email-auth-form');
+        if(authForm) {
+            authForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const nameGroup = document.getElementById('name-group');
+                const isSignUpForm = nameGroup.style.display === 'block';
+
+                if(isSignUpForm) {
+                    const name = document.getElementById('full-name').value;
+                    createUserWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            updateProfile(userCredential.user, { displayName: name }).then(() => { window.location.reload(); });
+                        })
+                        .catch((error) => { alert(error.message); });
+                } else {
+                    signInWithEmailAndPassword(auth, email, password)
+                        .then(() => { window.location.reload(); })
+                        .catch((error) => { alert(error.message); });
+                }
+            });
+        }
+
+        const googleLoginBtn = document.getElementById('google-login');
+        if(googleLoginBtn) {
+            googleLoginBtn.addEventListener('click', () => {
+                const provider = new GoogleAuthProvider();
+                provider.setCustomParameters({ prompt: 'select_account' });
+                signInWithPopup(auth, provider)
+                    .then(() => {
+                        window.location.reload();
+                    })
+                    .catch((error) => {
+                        console.error(error.message);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

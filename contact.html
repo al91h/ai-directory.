@@ -33,3 +33,58 @@
         .back-link:hover { color: var(--text-main); border-color: var(--primary-color); }
         main {
             max-width: 600px; margin: 0 auto; padding: 60px 30px 100px 30px;
+            text-align: center;
+        }
+        h1 { font-size: 28px; margin-bottom: 15px; }
+        p.lead { color: var(--text-muted); font-size: 16px; margin-bottom: 40px; line-height: 1.8; }
+        .contact-card {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 30px; text-align: right;
+        }
+        .contact-row {
+            display: flex; align-items: center; gap: 12px; padding: 14px 0;
+            border-bottom: 1px solid var(--border-color); font-size: 15px;
+        }
+        .contact-row:last-child { border-bottom: none; }
+        .contact-row span.label { color: var(--text-muted); min-width: 90px; }
+        .contact-row a { color: var(--text-main); text-decoration: none; }
+        .contact-row a:hover { color: var(--primary-color); }
+        footer {
+            text-align: center; padding: 30px; color: var(--text-muted);
+            font-size: 13px; border-top: 1px solid var(--border-color);
+        }
+        footer a { color: var(--text-muted); margin: 0 10px; text-decoration: none; }
+        footer a:hover { color: var(--primary-color); }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="header-title">دليل الذكاء الاصطناعي الشامل</a>
+        <a href="index.html" class="back-link">العودة للرئيسية</a>
+    </header>
+
+    <main>
+        <h1>اتصل بنا</h1>
+        <p class="lead">لديك اقتراح لأداة جديدة، أو واجهت مشكلة في الموقع؟ يسعدنا سماع رأيك.</p>
+
+        <div class="contact-card">
+            <div class="contact-row">
+                <span class="label">البريد:</span>
+                <a href="mailto:almmahalm@gmail.com">almmahalm@gmail.com</a>
+            </div>
+            <div class="contact-row">
+                <span class="label">GitHub:</span>
+                <a href="https://github.com/al91h" target="_blank" rel="noopener">al91h</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>© 2026 دليل الذكاء الاصطناعي الشامل. جميع الحقوق محفوظة.</div>
+        <div style="margin-top:10px;">
+            <a href="privacy.html">سياسة الخصوصية</a>
+            <a href="contact.html">اتصل بنا</a>
+        </div>
+    </footer>
+</body>
+</html>

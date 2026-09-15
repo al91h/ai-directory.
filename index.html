@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دليل الذكاء الاصطناعي الشامل</title>
-    <meta name="description" content="دليل شامل ومحدث لأفضل أدوات الذكاء الاصطناعي في مجالات الدراسة، البرمجة، الإنتاجية، والصور.">
+    <meta name="description" content="دليل شامل ومحدث لأفضل أدوات الذكاء الاصطناعي في مجالات الدراسة، البرمجة، الإنتاجية، وصناعة المحتوى — مع مراجعات صريحة، دليل ذكي، ومكتبة أوامر جاهزة.">
     <style>
         :root {
             --primary-color: #6366f1;
@@ -18,10 +18,10 @@
             --header-height: 80px;
         }
 
-        /* إخفاء المربع الأزرق وتضبيط الخط */
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; -webkit-tap-highlight-color: transparent; }
-        *:focus { outline: none; }
+        *:focus-visible { outline: 2px solid var(--primary-color); }
         body { margin: 0; background-color: var(--bg-color); overflow-x: hidden; color: var(--text-main); }
+        body.no-scroll { overflow: hidden; height: 100%; }
 
         header {
             display: flex; align-items: center; justify-content: space-between;
@@ -83,7 +83,7 @@
         .sidebar-footer-links a:hover { color: var(--primary-color); }
 
         .main-content { margin-top: var(--header-height); padding: 40px; min-height: 100vh; }
-        
+
         .search-container { text-align: center; margin-bottom: 30px; }
         .search-input {
             width: 100%; max-width: 650px; padding: 20px 25px; font-size: 18px;
@@ -91,13 +91,15 @@
             background: var(--card-bg); color: var(--text-main); transition: all 0.3s;
         }
         .search-input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15); }
-        
+
         .smart-guide-btn {
             display: inline-block; margin-top: 15px; padding: 10px 25px; background: linear-gradient(45deg, #10b981, #059669);
             color: white; border: none; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer;
             box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2); transition: all 0.3s;
         }
         .smart-guide-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); }
+
+        .no-results { text-align: center; color: var(--text-muted); padding: 60px 20px; display: none; }
 
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 35px; margin-bottom: 80px; }
         .tool-card {
@@ -108,13 +110,13 @@
         .tool-card:hover { transform: translateY(-8px); border-color: var(--primary-color); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.5); }
         .tool-card h4 { margin: 0 0 10px 0; color: var(--text-main); font-size: 22px; }
         .tool-card p { color: var(--text-muted); font-size: 14px; line-height: 1.7; margin: 0 0 15px 0; flex-grow: 1; }
-        
+
         .honest-review {
             background: rgba(255,255,255,0.02); border-right: 3px solid var(--secondary-color);
             padding: 10px 15px; font-size: 13px; color: #d1d5db; border-radius: 4px; margin-bottom: 15px;
         }
         .honest-review span { font-weight: bold; color: var(--secondary-color); }
-        
+
         .prompt-btn {
             background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3);
             color: #818cf8; padding: 8px; border-radius: 10px; font-size: 12px; font-weight: bold;
@@ -147,7 +149,7 @@
             background: var(--card-bg); border: 1px solid var(--border-color);
             width: 90%; max-width: 450px; border-radius: 24px; padding: 35px;
             position: relative; transform: translateY(30px); transition: all 0.4s;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.7); max-height: 90vh; overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7); max-height: 85vh; overflow-y: auto;
         }
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .close-btn {
@@ -156,23 +158,36 @@
         }
         .close-btn:hover { color: var(--secondary-color); }
 
-        .prompt-box { background: rgba(255,255,255,0.03); border: 1px dashed var(--border-color); padding: 15px; border-radius: 10px; margin-bottom: 10px; font-size: 14px; position: relative; }
+        .divider { text-align: center; color: var(--text-muted); font-size: 13px; margin: 15px 0; position: relative; }
+        .divider::before, .divider::after { content: ''; position: absolute; top: 50%; width: 38%; height: 1px; background: var(--border-color); }
+        .divider::before { right: 0; } .divider::after { left: 0; }
+
+        .prompt-box { background: rgba(255,255,255,0.03); border: 1px dashed var(--border-color); padding: 15px 45px 15px 15px; border-radius: 10px; margin-bottom: 12px; font-size: 14px; position: relative; line-height: 1.6; }
+        .prompt-editable {
+            color: #e5e7eb; outline: none; cursor: text; white-space: pre-wrap; word-break: break-word;
+            border-radius: 6px; padding: 2px 4px; margin: -2px -4px; transition: background 0.2s;
+        }
+        .prompt-editable:focus { background: rgba(99, 102, 241, 0.08); box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.4); }
+        .prompt-edit-hint { display: block; font-size: 11px; color: var(--text-muted); margin-top: 8px; }
         .copy-btn { position: absolute; left: 10px; top: 10px; background: var(--primary-color); color: white; border: none; border-radius: 5px; font-size: 11px; padding: 4px 8px; cursor: pointer; }
-        
+        .copy-btn.copied { background: #10b981; }
+
         .quiz-option {
             display: block; width: 100%; padding: 15px; margin-bottom: 10px; background: rgba(255,255,255,0.05);
             border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-main); cursor: pointer;
-            text-align: right; transition: 0.3s;
+            text-align: right; transition: 0.3s; font-size: 14px;
         }
         .quiz-option:hover { background: rgba(99, 102, 241, 0.1); border-color: var(--primary-color); }
 
         .social-btn, .submit-btn { width: 100%; padding: 12px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; }
         .social-btn { background: #ffffff; color: #1f2937; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; }
         .submit-btn { background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%); color: white; margin-top: 10px; }
+        .input-group { margin-bottom: 12px; }
         .input-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
-        .input-field { width: 100%; padding: 11px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-main); font-size: 14px; margin-bottom: 12px; }
+        .input-field { width: 100%; padding: 11px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-main); font-size: 14px; }
         .toggle-form { text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); cursor: pointer; }
         .toggle-form span { color: var(--primary-color); font-weight: bold; }
+        .auth-error { color: #f87171; font-size: 13px; text-align: center; margin-top: 10px; min-height: 16px; }
 
         @media (max-width: 768px) {
             header { padding: 0 15px; }
@@ -198,6 +213,7 @@
         </div>
         <div class="header-left" id="user-auth-area">
             <button class="about-link-btn" id="open-login-modal">تسجيل الدخول</button>
+            <button class="about-link-btn" id="open-about-modal">عن الموقع</button>
         </div>
     </header>
 
@@ -219,6 +235,7 @@
     <div class="main-content">
         <div class="search-container">
             <input type="text" id="search-bar" class="search-input" placeholder="ابحث عن أدوات، مهارات، لغات برمجة...">
+            <br>
             <button class="smart-guide-btn" id="open-quiz-modal">✨ محتار شو تختار؟ جرب الدليل الذكي</button>
         </div>
 
@@ -226,7 +243,7 @@
 
             <div class="tool-card" data-category="productivity programming images">
                 <h4>ChatGPT</h4>
-                <p>المساعد الأشهر عالمياً. ممتاز في المحادثة وتوليد الأفكار.</p>
+                <p>المساعد الأشهر عالمياً من OpenAI. ممتاز في المحادثة، البرمجة، وتوليد الأفكار.</p>
                 <div class="honest-review"><span>الخلاصة:</span> الأساس لأي طالب أو مبرمج، بس ممكن يهلوس بالمسائل الرياضية المعقدة.</div>
                 <button class="prompt-btn" onclick="openPrompts('chatgpt')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag programming">برمجة</span></div>
@@ -234,108 +251,72 @@
 
             <div class="tool-card" data-category="study productivity programming">
                 <h4>Claude AI</h4>
-                <p>مساعد ذكي متطور يتميز بفهم النصوص الطويلة جداً.</p>
+                <p>مساعد ذكي متطور من Anthropic، يتميز بفهم النصوص الطويلة جداً وكتابة أكواد دقيقة.</p>
                 <div class="honest-review"><span>الخلاصة:</span> الأفضل حالياً في كتابة أكواد HTML/CSS و Java خالية من الأخطاء من أول مرة.</div>
                 <button class="prompt-btn" onclick="openPrompts('claude')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag programming">برمجة</span></div>
             </div>
 
-            <div class="tool-card" data-category="images productivity">
-                <h4>Opus Clip</h4>
-                <p>أداة سحرية لتحويل الفيديوهات الطويلة إلى مقاطع قصيرة (Clips) بضغطة زر.</p>
-                <div class="honest-review"><span>الخلاصة:</span> كنز حقيقي للجيمرز وصناع المحتوى، بيوفر ساعات من المونتاج والقصقصة.</div>
-                <button class="prompt-btn" onclick="openPrompts('opus')">📝 أوامر جاهزة (Prompts)</button>
-                <div class="tag-container"><span class="tag images">صناع محتوى</span><span class="tag productivity">إنتاجية</span></div>
+            <div class="tool-card" data-category="study productivity">
+                <h4>Google NotebookLM</h4>
+                <p>يلخص المستندات ومقاطع الفيديو ويحوّلها إلى ملاحظات صوتية أو خرائط ذهنية.</p>
+                <div class="honest-review"><span>الخلاصة:</span> حرفياً أفضل أداة لمراجعة ليلة الامتحان وتلخيص ملفات الجامعة الضخمة.</div>
+                <button class="prompt-btn" onclick="openPrompts('notebook')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag study">دراسة وبحث</span><span class="tag productivity">إنتاجية</span></div>
+            </div>
+
+            <div class="tool-card" data-category="study">
+                <h4>Perplexity AI</h4>
+                <p>محرك بحث ذكي يجمع إجابات دقيقة من مصادر متعددة على الإنترنت مع ذكر المراجع.</p>
+                <div class="honest-review"><span>الخلاصة:</span> أفضل من البحث العادي بجوجل لو بدك مصدر موثوق بسرعة بدون ما تفتح 10 تبويبات.</div>
+                <button class="prompt-btn" onclick="openPrompts('perplexity')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag study">دراسة وبحث</span></div>
             </div>
 
             <div class="tool-card" data-category="programming productivity">
                 <h4>Blackbox AI</h4>
-                <p>ذكاء اصطناعي مخصص للمبرمجين، يبحث عن الأكواد ويحل المشاكل.</p>
+                <p>ذكاء اصطناعي مخصص للمبرمجين، يبحث عن الأكواد ويحل المشاكل البرمجية مباشرة.</p>
                 <div class="honest-review"><span>الخلاصة:</span> ممتاز جداً لطلاب البرمجة لكشف أخطاء C++ و Java بسرعة وفهم الـ Syntax.</div>
                 <button class="prompt-btn" onclick="openPrompts('blackbox')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag programming">برمجة</span></div>
             </div>
 
-            <div class="tool-card" data-category="study productivity">
-                <h4>Google NotebookLM</h4>
-                <p>يلخص المستندات ومقاطع الفيديو ويحوّلها إلى ملاحظات صوتية.</p>
-                <div class="honest-review"><span>الخلاصة:</span> حرفياً أفضل أداة لمراجعة ليلة الامتحان وتلخيص ملفات الجامعة الضخمة.</div>
-                <button class="prompt-btn" onclick="openPrompts('notebook')">📝 أوامر جاهزة (Prompts)</button>
-                <div class="tag-container"><span class="tag study">دراسة وبحث</span></div>
+            <div class="tool-card" data-category="images productivity">
+                <h4>Opus Clip</h4>
+                <p>أداة لتحويل الفيديوهات الطويلة إلى مقاطع قصيرة (Clips) جاهزة للنشر بضغطة زر.</p>
+                <div class="honest-review"><span>الخلاصة:</span> كنز حقيقي لصناع المحتوى والجيمرز، بيوفر ساعات من المونتاج والقصقصة اليدوية.</div>
+                <button class="prompt-btn" onclick="openPrompts('opus')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag images">صناع محتوى</span><span class="tag productivity">إنتاجية</span></div>
             </div>
 
             <div class="tool-card" data-category="images">
                 <h4>Midjourney</h4>
-                <p>أقوى أدوات توليد الصور الفنية بالذكاء الاصطناعي عبر Discord.</p>
+                <p>أقوى أدوات توليد الصور الفنية بالذكاء الاصطناعي، تُستخدم عبر Discord لإنتاج أعمال بصرية احترافية.</p>
                 <div class="honest-review"><span>الخلاصة:</span> الجودة خرافية وتفاصيلها دقيقة، بس بيحتاج اشتراك وتتعلم كيف تكتب الوصف صح.</div>
                 <button class="prompt-btn" onclick="openPrompts('midjourney')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag images">صور وبصريات</span></div>
             </div>
 
-        </div>
-    </div>
+            <div class="tool-card" data-category="images">
+                <h4>DALL·E 3</h4>
+                <p>أداة توليد صور من OpenAI مدمجة مع ChatGPT، تحول الوصف النصي إلى صورة واقعية أو فنية.</p>
+                <div class="honest-review"><span>الخلاصة:</span> أسهل من Midjourney للمبتدئين لأنك بس تكتب طلبك بالعربي أو الإنجليزي داخل ChatGPT مباشرة.</div>
+                <button class="prompt-btn" onclick="openPrompts('dalle')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag images">صور وبصريات</span></div>
+            </div>
 
-    <!-- الفوتر -->
-    <footer class="site-footer">
-        <div>© 2026 دليل الذكاء الاصطناعي الشامل. جميع الحقوق محفوظة.</div>
-    </footer>
+            <div class="tool-card" data-category="programming">
+                <h4>GitHub Copilot</h4>
+                <p>مساعد برمجي يعمل داخل محررات الأكواد مثل VS Code، يقترح أسطر وأكواد كاملة أثناء الكتابة.</p>
+                <div class="honest-review"><span>الخلاصة:</span> لازم تكون تعرف تقرأ كود عشان تراجع اقتراحاته، مش أداة للي ما يعرف يبرمج أبداً.</div>
+                <button class="prompt-btn" onclick="openPrompts('copilot')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag programming">برمجة</span></div>
+            </div>
 
-    <!-- النوافذ المنبثقة -->
-    <div class="modal-overlay" id="login-modal">
-        <div class="modal-content">
-            <button class="close-btn" id="close-login-modal">&times;</button>
-            <h2 style="margin-top:0; text-align:center; font-size:22px;" id="auth-modal-title">تسجيل الدخول</h2>
-            <button class="social-btn" id="google-login">متابعة بواسطة Google</button>
-            <div class="divider">أو بالطريقة العادية</div>
-            <form id="email-auth-form">
-                <div class="input-group" id="name-group" style="display: none;">
-                    <label>الاسم الكامل</label><input type="text" id="full-name" class="input-field">
-                </div>
-                <div class="input-group">
-                    <label>البريد الإلكتروني</label><input type="email" id="email" class="input-field" required>
-                </div>
-                <div class="input-group">
-                    <label>كلمة المرور</label><input type="password" id="password" class="input-field" required>
-                </div>
-                <button type="submit" class="submit-btn" id="submit-action-btn">دخول</button>
-            </form>
-            <div class="toggle-form"><span id="toggle-text">ليس لديك حساب؟ سجل الآن</span></div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="prompt-modal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="document.getElementById('prompt-modal').classList.remove('active')">&times;</button>
-            <h2 style="margin-top:0; color: var(--primary-color);">مكتبة الأوامر الجاهزة 📝</h2>
-            <p style="color:var(--text-muted); font-size: 13px; margin-bottom: 20px;">انسخ الأمر وعدّل ما بين الأقواس ليناسب احتياجك.</p>
-            <div id="prompts-list"></div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="quiz-modal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="document.getElementById('quiz-modal').classList.remove('active')">&times;</button>
-            <h2 style="margin-top:0; color: #10b981;">الدليل الذكي 🎯</h2>
-            <p style="color:var(--text-muted); margin-bottom: 20px;">شو أكثر إشي بتحتاج الأداة عشانه اليوم؟</p>
-            <button class="quiz-option" onclick="filterCategory('programming')">💻 حل أخطاء برمجية وكتابة أكواد</button>
-            <button class="quiz-option" onclick="filterCategory('study')">📚 تلخيص دراسة ومراجعة للامتحانات</button>
-            <button class="quiz-option" onclick="filterCategory('images')">🎮 صناعة محتوى، مونتاج وقصقصة (Clips)</button>
-            <button class="quiz-option" onclick="filterCategory('productivity')">⚡ تحسين الإنتاجية وكتابة نصوص</button>
-        </div>
-    </div>
-
-    <!-- السكريبت الأول: للواجهة والأزرار -->
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const sidebar = document.getElementById('sidebar');
-        const loginModal = document.getElementById('login-modal');
-        const quizModal = document.getElementById('quiz-modal');
-        const promptModal = document.getElementById('prompt-modal');
-
-        menuToggle.addEventListener('click', () => sidebar.classList.toggle('open-sidebar'));
-        document.getElementById('open-login-modal').addEventListener('click', () => loginModal.classList.add('active'));
-        document.getElementById('close-login-modal').addEventListener('click', () => loginModal.classList.remove('active'));
-        document.getElementById('open-quiz-modal').addEventListener('click', () => quizModal.classList.add('active'));
-
-        function filterCategory(filter) {
-            document.querySelectorAll('#filter-list li').
+            <div class="tool-card" data-category="programming productivity">
+                <h4>Cursor</h4>
+                <p>محرر أكواد مبني بالكامل حول الذكاء الاصطناعي، يتيح تعديل مشاريع كاملة عبر أوامر نصية.</p>
+                <div class="honest-review"><span>الخلاصة:</span> مناسب أكثر لمن عنده مشروع متوسط أو كبير، مو للسكربتات الصغيرة البسيطة.</div>
+                <button class="prompt-btn" onclick="openPrompts('cursor')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag programming">برمجة</span><span class="tag productivity">إنتاجية</span></div>
+      

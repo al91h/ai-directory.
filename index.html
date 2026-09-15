@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دليل الذكاء الاصطناعي الشامل</title>
-    <meta name="description" content="دليل شامل ومحدث لأفضل أدوات الذكاء الاصطناعي في مجالات الدراسة، البرمجة، الإنتاجية، والصور — مقارنات ووصف تفصيلي لكل أداة.">
+    <meta name="description" content="دليل شامل ومحدث لأفضل أدوات الذكاء الاصطناعي في مجالات الدراسة، البرمجة، الإنتاجية، والصور.">
     <style>
         :root {
             --primary-color: #6366f1;
@@ -79,31 +79,51 @@
             margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);
             display: flex; flex-direction: column; gap: 12px;
         }
-        .sidebar-footer-links a {
-            color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.2s;
-        }
+        .sidebar-footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
         .sidebar-footer-links a:hover { color: var(--primary-color); }
 
-        .main-content { margin-top: var(--header-height); padding: 60px 40px; min-height: 100vh; }
-        .search-container { text-align: center; margin-bottom: 60px; }
+        .main-content { margin-top: var(--header-height); padding: 40px; min-height: 100vh; }
+        
+        .search-container { text-align: center; margin-bottom: 30px; }
         .search-input {
             width: 100%; max-width: 650px; padding: 20px 25px; font-size: 18px;
             border: 1px solid var(--border-color); border-radius: 50px; outline: none;
             background: var(--card-bg); color: var(--text-main); transition: all 0.3s;
         }
         .search-input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15); }
+        
+        .smart-guide-btn {
+            display: inline-block; margin-top: 15px; padding: 10px 25px; background: linear-gradient(45deg, #10b981, #059669);
+            color: white; border: none; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2); transition: all 0.3s;
+        }
+        .smart-guide-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); }
 
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 35px; margin-bottom: 80px; }
         .tool-card {
-            background: var(--card-bg); padding: 30px; border-radius: 20px; cursor: pointer;
+            background: var(--card-bg); padding: 30px; border-radius: 20px;
             border: 1px solid var(--border-color); transition: all 0.4s; position: relative; overflow: hidden;
+            display: flex; flex-direction: column;
         }
         .tool-card:hover { transform: translateY(-8px); border-color: var(--primary-color); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.5); }
-        .tool-card h4 { margin: 0 0 15px 0; color: var(--text-main); font-size: 22px; }
-        .tool-card p { color: var(--text-muted); font-size: 15px; line-height: 1.7; margin: 0; min-height: 75px; }
+        .tool-card h4 { margin: 0 0 10px 0; color: var(--text-main); font-size: 22px; }
+        .tool-card p { color: var(--text-muted); font-size: 14px; line-height: 1.7; margin: 0 0 15px 0; flex-grow: 1; }
+        
+        .honest-review {
+            background: rgba(255,255,255,0.02); border-right: 3px solid var(--secondary-color);
+            padding: 10px 15px; font-size: 13px; color: #d1d5db; border-radius: 4px; margin-bottom: 15px;
+        }
+        .honest-review span { font-weight: bold; color: var(--secondary-color); }
+        
+        .prompt-btn {
+            background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #818cf8; padding: 8px; border-radius: 10px; font-size: 12px; font-weight: bold;
+            cursor: pointer; width: 100%; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .prompt-btn:hover { background: rgba(99, 102, 241, 0.2); }
 
-        .tag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
-        .tag { padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .tag { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
         .tag.study { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
         .tag.programming { background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
         .tag.images { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236,72,153,0.3); }
@@ -127,7 +147,7 @@
             background: var(--card-bg); border: 1px solid var(--border-color);
             width: 90%; max-width: 450px; border-radius: 24px; padding: 35px;
             position: relative; transform: translateY(30px); transition: all 0.4s;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7); max-height: 90vh; overflow-y: auto;
         }
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .close-btn {
@@ -136,32 +156,24 @@
         }
         .close-btn:hover { color: var(--secondary-color); }
 
-        .social-btn {
-            background: #ffffff; color: #1f2937; border: none; width: 100%; padding: 12px;
-            border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;
+        .prompt-box { background: rgba(255,255,255,0.03); border: 1px dashed var(--border-color); padding: 15px; border-radius: 10px; margin-bottom: 10px; font-size: 14px; position: relative; }
+        .copy-btn { position: absolute; left: 10px; top: 10px; background: var(--primary-color); color: white; border: none; border-radius: 5px; font-size: 11px; padding: 4px 8px; cursor: pointer; }
+        
+        .quiz-option {
+            display: block; width: 100%; padding: 15px; margin-bottom: 10px; background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-main); cursor: pointer;
+            text-align: right; transition: 0.3s;
         }
-        .divider { text-align: center; color: var(--text-muted); font-size: 13px; margin: 15px 0; position: relative; }
-        .divider::before, .divider::after { content: ''; position: absolute; top: 50%; width: 38%; height: 1px; background: var(--border-color); }
-        .divider::before { right: 0; } .divider::after { left: 0; }
+        .quiz-option:hover { background: rgba(99, 102, 241, 0.1); border-color: var(--primary-color); }
 
-        .input-group { margin-bottom: 12px; }
+        .social-btn, .submit-btn { width: 100%; padding: 12px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; }
+        .social-btn { background: #ffffff; color: #1f2937; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .submit-btn { background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%); color: white; margin-top: 10px; }
         .input-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
-        .input-field {
-            width: 100%; padding: 11px; background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-main); outline: none; font-size: 14px;
-        }
-        .input-field:focus { border-color: var(--primary-color); }
-        .submit-btn {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%);
-            color: white; border: none; width: 100%; padding: 12px; border-radius: 12px;
-            font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px;
-        }
-        .toggle-form { text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); }
-        .toggle-form span { color: var(--primary-color); cursor: pointer; font-weight: bold; }
-        .auth-error { color: #f87171; font-size: 13px; text-align: center; margin-top: 10px; min-height: 16px; }
+        .input-field { width: 100%; padding: 11px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-main); font-size: 14px; margin-bottom: 12px; }
+        .toggle-form { text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); cursor: pointer; }
+        .toggle-form span { color: var(--primary-color); font-weight: bold; }
 
-        /* ----- تعديلات شاشات الجوال ----- */
         @media (max-width: 768px) {
             header { padding: 0 15px; }
             .header-right { gap: 10px; }
@@ -172,7 +184,6 @@
             #menu-toggle { font-size: 24px; padding: 5px; }
             .main-content { padding: 30px 20px; }
             .search-input { font-size: 15px; padding: 15px 20px; }
-            .tools-grid { gap: 20px; }
         }
     </style>
 </head>
@@ -187,7 +198,6 @@
         </div>
         <div class="header-left" id="user-auth-area">
             <button class="about-link-btn" id="open-login-modal">تسجيل الدخول</button>
-            <button class="about-link-btn" id="open-about-modal">عن الموقع</button>
         </div>
     </header>
 
@@ -198,7 +208,7 @@
             <li data-filter="study">دراسة وبحث</li>
             <li data-filter="productivity">إنتاجية ونصوص</li>
             <li data-filter="programming">برمجة ومطورين</li>
-            <li data-filter="images">صور وبصريات</li>
+            <li data-filter="images">صناع المحتوى وبصريات</li>
         </ul>
         <div class="sidebar-footer-links">
             <a href="privacy.html">سياسة الخصوصية</a>
@@ -208,331 +218,124 @@
 
     <div class="main-content">
         <div class="search-container">
-            <input type="text" id="search-bar" class="search-input" placeholder="ابحث عن ChatGPT، Claude، Midjourney...">
+            <input type="text" id="search-bar" class="search-input" placeholder="ابحث عن أدوات، مهارات، لغات برمجة...">
+            <button class="smart-guide-btn" id="open-quiz-modal">✨ محتار شو تختار؟ جرب الدليل الذكي</button>
         </div>
 
         <div class="tools-grid" id="tools-container">
 
             <div class="tool-card" data-category="productivity programming images">
                 <h4>ChatGPT</h4>
-                <p>المساعد الأشهر عالمياً من OpenAI، يدعم المحادثة النصية، البرمجة، توليد الأفكار، وتحليل الصور والملفات.</p>
+                <p>المساعد الأشهر عالمياً. ممتاز في المحادثة وتوليد الأفكار.</p>
+                <div class="honest-review"><span>الخلاصة:</span> الأساس لأي طالب أو مبرمج، بس ممكن يهلوس بالمسائل الرياضية المعقدة.</div>
+                <button class="prompt-btn" onclick="openPrompts('chatgpt')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag programming">برمجة</span></div>
             </div>
 
             <div class="tool-card" data-category="study productivity programming">
                 <h4>Claude AI</h4>
-                <p>مساعد ذكي متطور من Anthropic، يتميز بفهم النصوص الطويلة والملفات الضخمة، وكتابة أكواد برمجية دقيقة.</p>
+                <p>مساعد ذكي متطور يتميز بفهم النصوص الطويلة جداً.</p>
+                <div class="honest-review"><span>الخلاصة:</span> الأفضل حالياً في كتابة أكواد HTML/CSS و Java خالية من الأخطاء من أول مرة.</div>
+                <button class="prompt-btn" onclick="openPrompts('claude')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag programming">برمجة</span></div>
+            </div>
+
+            <div class="tool-card" data-category="images productivity">
+                <h4>Opus Clip</h4>
+                <p>أداة سحرية لتحويل الفيديوهات الطويلة إلى مقاطع قصيرة (Clips) بضغطة زر.</p>
+                <div class="honest-review"><span>الخلاصة:</span> كنز حقيقي للجيمرز وصناع المحتوى، بيوفر ساعات من المونتاج والقصقصة.</div>
+                <button class="prompt-btn" onclick="openPrompts('opus')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag images">صناع محتوى</span><span class="tag productivity">إنتاجية</span></div>
+            </div>
+
+            <div class="tool-card" data-category="programming productivity">
+                <h4>Blackbox AI</h4>
+                <p>ذكاء اصطناعي مخصص للمبرمجين، يبحث عن الأكواد ويحل المشاكل.</p>
+                <div class="honest-review"><span>الخلاصة:</span> ممتاز جداً لطلاب البرمجة لكشف أخطاء C++ و Java بسرعة وفهم الـ Syntax.</div>
+                <button class="prompt-btn" onclick="openPrompts('blackbox')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag programming">برمجة</span></div>
             </div>
 
             <div class="tool-card" data-category="study productivity">
                 <h4>Google NotebookLM</h4>
-                <p>مساعد بحثي من قوقل يلخص المستندات ومقاطع الفيديو ويحوّلها إلى ملاحظات صوتية أو خرائط ذهنية.</p>
-                <div class="tag-container"><span class="tag study">دراسة وبحث</span><span class="tag productivity">إنتاجية</span></div>
-            </div>
-
-            <div class="tool-card" data-category="study">
-                <h4>Perplexity AI</h4>
-                <p>محرك بحث ذكي يجمع إجابات دقيقة من مصادر متعددة على الإنترنت مع ذكر المراجع لكل معلومة.</p>
+                <p>يلخص المستندات ومقاطع الفيديو ويحوّلها إلى ملاحظات صوتية.</p>
+                <div class="honest-review"><span>الخلاصة:</span> حرفياً أفضل أداة لمراجعة ليلة الامتحان وتلخيص ملفات الجامعة الضخمة.</div>
+                <button class="prompt-btn" onclick="openPrompts('notebook')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag study">دراسة وبحث</span></div>
             </div>
 
             <div class="tool-card" data-category="images">
                 <h4>Midjourney</h4>
-                <p>أحد أقوى أدوات توليد الصور الفنية بالذكاء الاصطناعي، يُستخدم عبر Discord لإنتاج أعمال بصرية احترافية.</p>
+                <p>أقوى أدوات توليد الصور الفنية بالذكاء الاصطناعي عبر Discord.</p>
+                <div class="honest-review"><span>الخلاصة:</span> الجودة خرافية وتفاصيلها دقيقة، بس بيحتاج اشتراك وتتعلم كيف تكتب الوصف صح.</div>
+                <button class="prompt-btn" onclick="openPrompts('midjourney')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag images">صور وبصريات</span></div>
-            </div>
-
-            <div class="tool-card" data-category="images">
-                <h4>DALL·E 3</h4>
-                <p>أداة توليد صور من OpenAI، مدمجة مع ChatGPT، تحول الوصف النصي إلى صورة واقعية أو فنية بدقة عالية.</p>
-                <div class="tag-container"><span class="tag images">صور وبصريات</span></div>
-            </div>
-
-            <div class="tool-card" data-category="programming">
-                <h4>GitHub Copilot</h4>
-                <p>مساعد برمجي يعمل داخل محررات الأكواد مثل VS Code، يقترح أسطر وأكواد كاملة أثناء الكتابة مباشرة.</p>
-                <div class="tag-container"><span class="tag programming">برمجة</span></div>
-            </div>
-
-            <div class="tool-card" data-category="programming productivity">
-                <h4>Cursor</h4>
-                <p>محرر أكواد مبني بالكامل حول الذكاء الاصطناعي، يتيح تعديل مشاريع كاملة عبر أوامر نصية بسيطة.</p>
-                <div class="tag-container"><span class="tag programming">برمجة</span><span class="tag productivity">إنتاجية</span></div>
-            </div>
-
-            <div class="tool-card" data-category="productivity">
-                <h4>Notion AI</h4>
-                <p>إضافة ذكاء اصطناعي داخل تطبيق Notion، تساعد في تلخيص الملاحظات، صياغة النصوص، وتنظيم المهام.</p>
-                <div class="tag-container"><span class="tag productivity">إنتاجية</span></div>
-            </div>
-
-            <div class="tool-card" data-category="images">
-                <h4>Canva AI (Magic Studio)</h4>
-                <p>مجموعة أدوات ذكاء اصطناعي داخل Canva لتصميم الصور والمنشورات وتوليد الخلفيات تلقائياً.</p>
-                <div class="tag-container"><span class="tag images">صور وبصريات</span></div>
-            </div>
-
-            <div class="tool-card" data-category="productivity study">
-                <h4>Grammarly</h4>
-                <p>أداة تدقيق لغوي ذكية للغة الإنجليزية، تصحح الأخطاء الإملائية والنحوية وتحسّن أسلوب الكتابة.</p>
-                <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag study">دراسة وبحث</span></div>
-            </div>
-
-            <div class="tool-card" data-category="study productivity">
-                <h4>Gemini</h4>
-                <p>مساعد قوقل الذكي متعدد الوسائط، يدعم النصوص والصور والفيديو ومتكامل مع خدمات Google الأخرى.</p>
-                <div class="tag-container"><span class="tag study">دراسة وبحث</span><span class="tag productivity">إنتاجية</span></div>
-            </div>
-
-            <div class="tool-card" data-category="images">
-                <h4>Runway</h4>
-                <p>منصة لتوليد وتحرير الفيديو بالذكاء الاصطناعي، تتيح إنشاء مقاطع فيديو كاملة من نص أو صورة.</p>
-                <div class="tag-container"><span class="tag images">صور وبصريات</span></div>
-            </div>
-
-            <div class="tool-card" data-category="productivity">
-                <h4>ElevenLabs</h4>
-                <p>أداة تحويل النص إلى صوت طبيعي باحترافية عالية، تدعم لغات متعددة واستنساخ الأصوات.</p>
-                <div class="tag-container"><span class="tag productivity">إنتاجية</span></div>
-            </div>
-
-            <div class="tool-card" data-category="programming">
-                <h4>Replit AI (Ghostwriter)</h4>
-                <p>مساعد برمجي مدمج داخل بيئة Replit السحابية، يساعد على كتابة وتشغيل واختبار الأكواد مباشرة من المتصفح.</p>
-                <div class="tag-container"><span class="tag programming">برمجة</span></div>
-            </div>
-
-            <div class="tool-card" data-category="study">
-                <h4>Consensus</h4>
-                <p>محرك بحث أكاديمي مدعوم بالذكاء الاصطناعي، يستخرج نتائج وخلاصات من الأوراق العلمية المنشورة مباشرة.</p>
-                <div class="tag-container"><span class="tag study">دراسة وبحث</span></div>
-            </div>
-
-            <div class="tool-card" data-category="productivity images">
-                <h4>Adobe Firefly</h4>
-                <p>مجموعة أدوات Adobe لتوليد الصور والتأثيرات البصرية، مدمجة مباشرة مع Photoshop وIllustrator.</p>
-                <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag images">صور وبصريات</span></div>
-            </div>
-
-            <div class="tool-card" data-category="programming productivity">
-                <h4>Windsurf</h4>
-                <p>بيئة تطوير ذكية مبنية حول الذكاء الاصطناعي، تسمح بتنفيذ مهام برمجية معقدة عبر تعليمات نصية.</p>
-                <div class="tag-container"><span class="tag programming">برمجة</span><span class="tag productivity">إنتاجية</span></div>
             </div>
 
         </div>
     </div>
 
+    <!-- الفوتر -->
     <footer class="site-footer">
         <div>© 2026 دليل الذكاء الاصطناعي الشامل. جميع الحقوق محفوظة.</div>
-        <div style="margin-top:10px;">
-            <a href="privacy.html">سياسة الخصوصية</a>
-            <a href="contact.html">اتصل بنا</a>
-        </div>
     </footer>
 
+    <!-- النوافذ المنبثقة -->
     <div class="modal-overlay" id="login-modal">
         <div class="modal-content">
             <button class="close-btn" id="close-login-modal">&times;</button>
             <h2 style="margin-top:0; text-align:center; font-size:22px;" id="auth-modal-title">تسجيل الدخول</h2>
-
-            <button class="social-btn" id="google-login">
-                <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.14C3.15 21.32 7.23 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.62H1.18C.43 8.13 0 9.87 0 12s.43 3.87 1.18 5.38l4.09-3.14z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.23 0 3.15 2.68 1.18 6.62l4.09 3.14c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
-                متابعة بواسطة Google
-            </button>
-
+            <button class="social-btn" id="google-login">متابعة بواسطة Google</button>
             <div class="divider">أو بالطريقة العادية</div>
-
             <form id="email-auth-form">
                 <div class="input-group" id="name-group" style="display: none;">
-                    <label>الاسم الكامل</label>
-                    <input type="text" id="full-name" class="input-field" placeholder="ادخل اسمك">
+                    <label>الاسم الكامل</label><input type="text" id="full-name" class="input-field">
                 </div>
                 <div class="input-group">
-                    <label>البريد الإلكتروني</label>
-                    <input type="email" id="email" class="input-field" required placeholder="name@example.com">
+                    <label>البريد الإلكتروني</label><input type="email" id="email" class="input-field" required>
                 </div>
                 <div class="input-group">
-                    <label>كلمة المرور (6 خانات على الأقل)</label>
-                    <input type="password" id="password" class="input-field" required placeholder="••••••••">
+                    <label>كلمة المرور</label><input type="password" id="password" class="input-field" required>
                 </div>
                 <button type="submit" class="submit-btn" id="submit-action-btn">دخول</button>
-                <div class="auth-error" id="auth-error-msg"></div>
             </form>
-
-            <div class="toggle-form">
-                <span id="toggle-text">ليس لديك حساب؟ سجل الآن</span>
-            </div>
+            <div class="toggle-form"><span id="toggle-text">ليس لديك حساب؟ سجل الآن</span></div>
         </div>
     </div>
 
-    <div class="modal-overlay" id="about-modal">
+    <div class="modal-overlay" id="prompt-modal">
         <div class="modal-content">
-            <button class="close-btn" id="close-about-modal">&times;</button>
-            <h2>عن المنصة</h2>
-            <p style="color:var(--text-muted); line-height:1.7;">هذا الموقع دليل متكامل لأبرز أدوات الذكاء الاصطناعي، مصمم لمساعدة الطلاب والمطورين وصنّاع المحتوى على اكتشاف الأداة الأنسب لاحتياجاتهم.</p>
+            <button class="close-btn" onclick="document.getElementById('prompt-modal').classList.remove('active')">&times;</button>
+            <h2 style="margin-top:0; color: var(--primary-color);">مكتبة الأوامر الجاهزة 📝</h2>
+            <p style="color:var(--text-muted); font-size: 13px; margin-bottom: 20px;">انسخ الأمر وعدّل ما بين الأقواس ليناسب احتياجك.</p>
+            <div id="prompts-list"></div>
         </div>
     </div>
 
-    <!-- السكريبت الأول: خاص بواجهة الموقع والكبسات (يشتغل فوراً بدون تأخير) -->
+    <div class="modal-overlay" id="quiz-modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="document.getElementById('quiz-modal').classList.remove('active')">&times;</button>
+            <h2 style="margin-top:0; color: #10b981;">الدليل الذكي 🎯</h2>
+            <p style="color:var(--text-muted); margin-bottom: 20px;">شو أكثر إشي بتحتاج الأداة عشانه اليوم؟</p>
+            <button class="quiz-option" onclick="filterCategory('programming')">💻 حل أخطاء برمجية وكتابة أكواد</button>
+            <button class="quiz-option" onclick="filterCategory('study')">📚 تلخيص دراسة ومراجعة للامتحانات</button>
+            <button class="quiz-option" onclick="filterCategory('images')">🎮 صناعة محتوى، مونتاج وقصقصة (Clips)</button>
+            <button class="quiz-option" onclick="filterCategory('productivity')">⚡ تحسين الإنتاجية وكتابة نصوص</button>
+        </div>
+    </div>
+
+    <!-- السكريبت الأول: للواجهة والأزرار -->
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         const loginModal = document.getElementById('login-modal');
-        const openLoginBtn = document.getElementById('open-login-modal');
-        const closeLoginBtn = document.getElementById('close-login-modal');
-        const aboutModal = document.getElementById('about-modal');
-        const openAboutBtn = document.getElementById('open-about-modal');
-        const closeAboutBtn = document.getElementById('close-about-modal');
+        const quizModal = document.getElementById('quiz-modal');
+        const promptModal = document.getElementById('prompt-modal');
 
-        document.addEventListener('click', (e) => {
-            if (sidebar.classList.contains('open-sidebar') && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-                sidebar.classList.remove('open-sidebar');
-            }
-        });
         menuToggle.addEventListener('click', () => sidebar.classList.toggle('open-sidebar'));
-        
-        if(openLoginBtn) openLoginBtn.addEventListener('click', () => loginModal.classList.add('active'));
-        if(closeLoginBtn) closeLoginBtn.addEventListener('click', () => loginModal.classList.remove('active'));
-        if(openAboutBtn) openAboutBtn.addEventListener('click', () => aboutModal.classList.add('active'));
-        if(closeAboutBtn) closeAboutBtn.addEventListener('click', () => aboutModal.classList.remove('active'));
+        document.getElementById('open-login-modal').addEventListener('click', () => loginModal.classList.add('active'));
+        document.getElementById('close-login-modal').addEventListener('click', () => loginModal.classList.remove('active'));
+        document.getElementById('open-quiz-modal').addEventListener('click', () => quizModal.classList.add('active'));
 
-        const filterItems = document.querySelectorAll('#filter-list li');
-        let toolCards = document.querySelectorAll('.tool-card');
-        filterItems.forEach(item => {
-            item.addEventListener('click', () => {
-                filterItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-                const filter = item.getAttribute('data-filter');
-                toolCards = document.querySelectorAll('.tool-card');
-                toolCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                if (window.innerWidth <= 768) sidebar.classList.remove('open-sidebar');
-            });
-        });
-
-        const searchBar = document.getElementById('search-bar');
-        if (searchBar) {
-            searchBar.addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase();
-                toolCards = document.querySelectorAll('.tool-card');
-                toolCards.forEach(card => {
-                    const text = card.innerText.toLowerCase();
-                    card.style.display = text.includes(term) ? 'block' : 'none';
-                });
-            });
-        }
-
-        let isSignUp = false;
-        const authModalTitle = document.getElementById('auth-modal-title');
-        const nameGroup = document.getElementById('name-group');
-        const submitBtn = document.getElementById('submit-action-btn');
-        const toggleText = document.getElementById('toggle-text');
-        
-        if(toggleText) {
-            toggleText.addEventListener('click', () => {
-                isSignUp = !isSignUp;
-                if(isSignUp) {
-                    authModalTitle.innerText = "إنشاء حساب جديد";
-                    nameGroup.style.display = 'block';
-                    submitBtn.innerText = "تسجيل";
-                    toggleText.innerText = "لديك حساب بالفعل؟ سجل دخولك";
-                } else {
-                    authModalTitle.innerText = "تسجيل الدخول";
-                    nameGroup.style.display = 'none';
-                    submitBtn.innerText = "دخول";
-                    toggleText.innerText = "ليس لديك حساب؟ سجل الآن";
-                }
-            });
-        }
-    </script>
-
-    <!-- السكريبت الثاني: خاص بتسجيل الدخول وقاعدة البيانات -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBILHh_7OlyiM4EfV1Cw0y2QEhAZgrIaKw",
-            authDomain: "ai-directory-a1650.firebaseapp.com",
-            projectId: "ai-directory-a1650",
-            storageBucket: "ai-directory-a1650.firebasestorage.app",
-            messagingSenderId: "1097261050060",
-            appId: "1:1097261050060:web:2ebfab4c850b7be266fa69",
-            measurementId: "G-PSM5Y3YBKT"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const userAuthArea = document.getElementById('user-auth-area');
-        const loginModal = document.getElementById('login-modal');
-        const aboutModal = document.getElementById('about-modal');
-        const errorMsg = document.getElementById('auth-error-msg');
-
-        setPersistence(auth, browserLocalPersistence).then(() => {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    loginModal.classList.remove('active');
-                    const displayName = user.displayName || user.email.split('@')[0];
-                    userAuthArea.innerHTML = `
-                        <span style="color: #4ade80; font-weight: bold; font-size: 14px; margin-left: 10px;">${displayName}</span>
-                        <button class="about-link-btn" id="logout-btn" style="border-color: #ef4444; color: #f87171;">خروج</button>
-                        <button class="about-link-btn" id="open-about-modal-logged">عن الموقع</button>
-                    `;
-                    document.getElementById('logout-btn').addEventListener('click', () => {
-                        signOut(auth).then(() => { window.location.reload(); });
-                    });
-                    document.getElementById('open-about-modal-logged').addEventListener('click', () => aboutModal.classList.add('active'));
-                }
-            });
-        });
-
-        const authForm = document.getElementById('email-auth-form');
-        if(authForm) {
-            authForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                errorMsg.innerText = ""; // مسح الخطأ السابق
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                const nameGroup = document.getElementById('name-group');
-                const isSignUpForm = nameGroup.style.display === 'block';
-
-                if(isSignUpForm) {
-                    const name = document.getElementById('full-name').value;
-                    createUserWithEmailAndPassword(auth, email, password)
-                        .then((userCredential) => {
-                            updateProfile(userCredential.user, { displayName: name }).then(() => { window.location.reload(); });
-                        })
-                        .catch((error) => { errorMsg.innerText = "خطأ: " + error.message; });
-                } else {
-                    signInWithEmailAndPassword(auth, email, password)
-                        .then(() => { window.location.reload(); })
-                        .catch((error) => { errorMsg.innerText = "تأكد من البريد الإلكتروني أو كلمة المرور"; });
-                }
-            });
-        }
-
-        const googleLoginBtn = document.getElementById('google-login');
-        if(googleLoginBtn) {
-            googleLoginBtn.addEventListener('click', () => {
-                errorMsg.innerText = "";
-                const provider = new GoogleAuthProvider();
-                provider.setCustomParameters({ prompt: 'select_account' });
-                signInWithPopup(auth, provider)
-                    .then(() => {
-                        window.location.reload();
-                    })
-                    .catch((error) => {
-                        errorMsg.innerText = "فشل تسجيل الدخول بواسطة قوقل";
-                    });
-            });
-        }
-    </script>
-</body>
-</html>
+        function filterCategory(filter) {
+            document.querySelectorAll('#filter-list li').

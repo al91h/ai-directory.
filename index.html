@@ -18,7 +18,9 @@
             --header-height: 80px;
         }
 
-        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        /* إخفاء المربع الأزرق وتضبيط الخط */
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; -webkit-tap-highlight-color: transparent; }
+        *:focus { outline: none; }
         body { margin: 0; background-color: var(--bg-color); overflow-x: hidden; color: var(--text-main); }
 
         header {
@@ -158,6 +160,20 @@
         .toggle-form { text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); }
         .toggle-form span { color: var(--primary-color); cursor: pointer; font-weight: bold; }
         .auth-error { color: #f87171; font-size: 13px; text-align: center; margin-top: 10px; min-height: 16px; }
+
+        /* ----- تعديلات شاشات الجوال ----- */
+        @media (max-width: 768px) {
+            header { padding: 0 15px; }
+            .header-right { gap: 10px; }
+            .header-title { font-size: 15px; }
+            .header-subtitle { display: none; }
+            .header-left { gap: 5px; }
+            .about-link-btn { padding: 6px 10px; font-size: 11px; border-radius: 15px; white-space: nowrap; }
+            #menu-toggle { font-size: 24px; padding: 5px; }
+            .main-content { padding: 30px 20px; }
+            .search-input { font-size: 15px; padding: 15px 20px; }
+            .tools-grid { gap: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -359,23 +375,8 @@
         </div>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBILHh_7OlyiM4EfV1Cw0y2QEhAZgrIaKw",
-            authDomain: "ai-directory-a1650.firebaseapp.com",
-            projectId: "ai-directory-a1650",
-            storageBucket: "ai-directory-a1650.firebasestorage.app",
-            messagingSenderId: "1097261050060",
-            appId: "1:1097261050060:web:2ebfab4c850b7be266fa69",
-            measurementId: "G-PSM5Y3YBKT"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
+    <!-- السكريبت الأول: خاص بواجهة الموقع والكبسات (يشتغل فوراً بدون تأخير) -->
+    <script>
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         const loginModal = document.getElementById('login-modal');
@@ -384,30 +385,27 @@
         const aboutModal = document.getElementById('about-modal');
         const openAboutBtn = document.getElementById('open-about-modal');
         const closeAboutBtn = document.getElementById('close-about-modal');
-        const userAuthArea = document.getElementById('user-auth-area');
-        const toolCards = document.querySelectorAll('.tool-card');
-        const googleLoginBtn = document.getElementById('google-login');
-        const authErrorMsg = document.getElementById('auth-error-msg');
 
         document.addEventListener('click', (e) => {
             if (sidebar.classList.contains('open-sidebar') && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
                 sidebar.classList.remove('open-sidebar');
             }
         });
-
         menuToggle.addEventListener('click', () => sidebar.classList.toggle('open-sidebar'));
-
-        if (openLoginBtn) openLoginBtn.addEventListener('click', () => loginModal.classList.add('active'));
-        closeLoginBtn.addEventListener('click', () => loginModal.classList.remove('active'));
-        openAboutBtn.addEventListener('click', () => aboutModal.classList.add('active'));
-        closeAboutBtn.addEventListener('click', () => aboutModal.classList.remove('active'));
+        
+        if(openLoginBtn) openLoginBtn.addEventListener('click', () => loginModal.classList.add('active'));
+        if(closeLoginBtn) closeLoginBtn.addEventListener('click', () => loginModal.classList.remove('active'));
+        if(openAboutBtn) openAboutBtn.addEventListener('click', () => aboutModal.classList.add('active'));
+        if(closeAboutBtn) closeAboutBtn.addEventListener('click', () => aboutModal.classList.remove('active'));
 
         const filterItems = document.querySelectorAll('#filter-list li');
+        let toolCards = document.querySelectorAll('.tool-card');
         filterItems.forEach(item => {
             item.addEventListener('click', () => {
                 filterItems.forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
                 const filter = item.getAttribute('data-filter');
+                toolCards = document.querySelectorAll('.tool-card');
                 toolCards.forEach(card => {
                     if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
                         card.style.display = 'block';
@@ -423,6 +421,7 @@
         if (searchBar) {
             searchBar.addEventListener('input', (e) => {
                 const term = e.target.value.toLowerCase();
+                toolCards = document.querySelectorAll('.tool-card');
                 toolCards.forEach(card => {
                     const text = card.innerText.toLowerCase();
                     card.style.display = text.includes(term) ? 'block' : 'none';
@@ -430,100 +429,110 @@
             });
         }
 
-        function renderLoggedInUser(user) {
-            loginModal.classList.remove('active');
-            const displayName = user.displayName || (user.email ? user.email.split('@')[0] : 'مستخدم');
-            userAuthArea.innerHTML = `
-                <span style="color: #4ade80; font-weight: bold; font-size: 14px; margin-left: 10px;">مرحباً، ${displayName}</span>
-                <button class="about-link-btn" id="logout-btn" style="border-color: #ef4444; color: #f87171;">خروج</button>
-                <button class="about-link-btn" id="open-about-modal-logged">عن الموقع</button>
-            `;
-            document.getElementById('logout-btn').addEventListener('click', () => {
-                signOut(auth).then(() => { window.location.reload(); });
-            });
-            document.getElementById('open-about-modal-logged').addEventListener('click', () => aboutModal.classList.add('active'));
-        }
-
-        setPersistence(auth, browserLocalPersistence).then(() => {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    renderLoggedInUser(user);
-                }
-            });
-        });
-
-        getRedirectResult(auth).catch((error) => {
-            console.error("خطأ في تسجيل الدخول: ", error.message);
-            authErrorMsg.innerText = "حدث خطأ أثناء تسجيل الدخول، حاول مرة أخرى.";
-        });
-
-        googleLoginBtn.addEventListener('click', () => {
-            const provider = new GoogleAuthProvider();
-            provider.setCustomParameters({ prompt: 'select_account' });
-            signInWithRedirect(auth, provider);
-        });
-
         let isSignUp = false;
         const authModalTitle = document.getElementById('auth-modal-title');
         const nameGroup = document.getElementById('name-group');
         const submitBtn = document.getElementById('submit-action-btn');
         const toggleText = document.getElementById('toggle-text');
-        const authForm = document.getElementById('email-auth-form');
+        
+        if(toggleText) {
+            toggleText.addEventListener('click', () => {
+                isSignUp = !isSignUp;
+                if(isSignUp) {
+                    authModalTitle.innerText = "إنشاء حساب جديد";
+                    nameGroup.style.display = 'block';
+                    submitBtn.innerText = "تسجيل";
+                    toggleText.innerText = "لديك حساب بالفعل؟ سجل دخولك";
+                } else {
+                    authModalTitle.innerText = "تسجيل الدخول";
+                    nameGroup.style.display = 'none';
+                    submitBtn.innerText = "دخول";
+                    toggleText.innerText = "ليس لديك حساب؟ سجل الآن";
+                }
+            });
+        }
+    </script>
 
-        toggleText.addEventListener('click', () => {
-            isSignUp = !isSignUp;
-            authErrorMsg.innerText = '';
-            if (isSignUp) {
-                authModalTitle.innerText = "إنشاء حساب جديد";
-                nameGroup.style.display = 'block';
-                submitBtn.innerText = "تسجيل";
-                toggleText.innerText = "لديك حساب بالفعل؟ سجل دخولك";
-            } else {
-                authModalTitle.innerText = "تسجيل الدخول";
-                nameGroup.style.display = 'none';
-                submitBtn.innerText = "دخول";
-                toggleText.innerText = "ليس لديك حساب؟ سجل الآن";
-            }
+    <!-- السكريبت الثاني: خاص بتسجيل الدخول وقاعدة البيانات -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBILHh_7OlyiM4EfV1Cw0y2QEhAZgrIaKw",
+            authDomain: "ai-directory-a1650.firebaseapp.com",
+            projectId: "ai-directory-a1650",
+            storageBucket: "ai-directory-a1650.firebasestorage.app",
+            messagingSenderId: "1097261050060",
+            appId: "1:1097261050060:web:2ebfab4c850b7be266fa69",
+            measurementId: "G-PSM5Y3YBKT"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const userAuthArea = document.getElementById('user-auth-area');
+        const loginModal = document.getElementById('login-modal');
+        const aboutModal = document.getElementById('about-modal');
+        const errorMsg = document.getElementById('auth-error-msg');
+
+        setPersistence(auth, browserLocalPersistence).then(() => {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    loginModal.classList.remove('active');
+                    const displayName = user.displayName || user.email.split('@')[0];
+                    userAuthArea.innerHTML = `
+                        <span style="color: #4ade80; font-weight: bold; font-size: 14px; margin-left: 10px;">${displayName}</span>
+                        <button class="about-link-btn" id="logout-btn" style="border-color: #ef4444; color: #f87171;">خروج</button>
+                        <button class="about-link-btn" id="open-about-modal-logged">عن الموقع</button>
+                    `;
+                    document.getElementById('logout-btn').addEventListener('click', () => {
+                        signOut(auth).then(() => { window.location.reload(); });
+                    });
+                    document.getElementById('open-about-modal-logged').addEventListener('click', () => aboutModal.classList.add('active'));
+                }
+            });
         });
 
-        function friendlyAuthError(code) {
-            switch (code) {
-                case 'auth/email-already-in-use': return 'هذا البريد الإلكتروني مستخدم بالفعل.';
-                case 'auth/invalid-email': return 'صيغة البريد الإلكتروني غير صحيحة.';
-                case 'auth/weak-password': return 'كلمة المرور ضعيفة، يجب أن تكون 6 خانات على الأقل.';
-                case 'auth/user-not-found':
-                case 'auth/wrong-password':
-                case 'auth/invalid-credential': return 'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
-                default: return 'حدث خطأ، حاول مرة أخرى.';
-            }
+        const authForm = document.getElementById('email-auth-form');
+        if(authForm) {
+            authForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                errorMsg.innerText = ""; // مسح الخطأ السابق
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const nameGroup = document.getElementById('name-group');
+                const isSignUpForm = nameGroup.style.display === 'block';
+
+                if(isSignUpForm) {
+                    const name = document.getElementById('full-name').value;
+                    createUserWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            updateProfile(userCredential.user, { displayName: name }).then(() => { window.location.reload(); });
+                        })
+                        .catch((error) => { errorMsg.innerText = "خطأ: " + error.message; });
+                } else {
+                    signInWithEmailAndPassword(auth, email, password)
+                        .then(() => { window.location.reload(); })
+                        .catch((error) => { errorMsg.innerText = "تأكد من البريد الإلكتروني أو كلمة المرور"; });
+                }
+            });
         }
 
-        authForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            authErrorMsg.innerText = '';
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const name = document.getElementById('full-name').value;
-
-            if (isSignUp) {
-                createUserWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        return updateProfile(userCredential.user, { displayName: name })
-                            .then(() => renderLoggedInUser(userCredential.user));
+        const googleLoginBtn = document.getElementById('google-login');
+        if(googleLoginBtn) {
+            googleLoginBtn.addEventListener('click', () => {
+                errorMsg.innerText = "";
+                const provider = new GoogleAuthProvider();
+                provider.setCustomParameters({ prompt: 'select_account' });
+                signInWithPopup(auth, provider)
+                    .then(() => {
+                        window.location.reload();
                     })
                     .catch((error) => {
-                        authErrorMsg.innerText = friendlyAuthError(error.code);
+                        errorMsg.innerText = "فشل تسجيل الدخول بواسطة قوقل";
                     });
-            } else {
-                signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        renderLoggedInUser(userCredential.user);
-                    })
-                    .catch((error) => {
-                        authErrorMsg.innerText = friendlyAuthError(error.code);
-                    });
-            }
-        });
+            });
+        }
     </script>
 </body>
 </html>

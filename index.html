@@ -1,9 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الذكاء الاصطناعي الشامل</title>
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #ec4899;
+            --bg-color: #050505;
+            --card-bg: #141414;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-color: #262626;
+            --sidebar-width: 280px;
+            --header-height: 80px;
+        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { margin: 0; background-color: var(--bg-color); overflow-x: hidden; color: var(--text-main); }
+        header {
+            display: flex; align-items: center; justify-content: space-between;
+            height: var(--header-height); padding: 0 30px;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px);
+            position: fixed; width: 100%; top: 0; z-index: 1002;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .header-left { display: flex; align-items: center; gap: 10px; }
+        #menu-toggle {
+            background: none; border: none; cursor: pointer; padding: 10px;
+            font-size: 28px; color: var(--text-main); display: flex; align-items: center; justify-content: center;
+        }
+        .header-title-container { display: flex; flex-direction: column; }
+        .header-title {
+            font-size: 20px; font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .header-subtitle { font-size: 11px; color: var(--text-muted); }
+        .about-link-btn {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
+            color: var(--text-main); padding: 8px 16px; border-radius: 20px; font-size: 13px;
+            cursor: pointer; text-decoration: none; transition: all 0.3s; display: inline-block;
+        }
+        .about-link-btn:hover { background: var(--primary-color); border-color: var(--primary-color); }
+        #sidebar {
+            width: var(--sidebar-width); height: 100vh; background: var(--card-bg);
+            position: fixed; top: 0; inset-inline-start: calc(var(--sidebar-width) * -1);
+            transition: inset-inline-start 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1001; border-inline-end: 1px solid var(--border-color);
+            padding: calc(var(--header-height) + 40px) 30px 30px 30px;
+        }
+        #sidebar.open-sidebar { inset-inline-start: 0; }
+        .category-list { list-style: none; padding: 0; margin: 0; }
+        .category-list li {
+            padding: 16px 20px; color: var(--text-muted); cursor: pointer;
+            border-radius: 12px; margin-bottom: 8px; transition: all 0.3s ease; font-weight: 600;
+        }
+        .category-list li:hover { background: rgba(255,255,255,0.05); color: var(--text-main); }
+        .category-list li.active {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%);
+            color: white; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        }
+        .main-content { margin-top: var(--header-height); padding: 60px 40px; min-height: 100vh; }
+        .search-container { text-align: center; margin-bottom: 60px; }
+        .search-input {
+            width: 100%; max-width: 650px; padding: 20px 25px; font-size: 18px;
+            border: 1px solid var(--border-color); border-radius: 50px; outline: none;
+            background: var(--card-bg); color: var(--text-main); transition: all 0.3s;
+        }
+        .search-input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15); }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 35px; margin-bottom: 80px; }
+        .tool-card {
+            background: var(--card-bg); padding: 30px; border-radius: 20px; cursor: pointer;
+            border: 1px solid var(--border-color); transition: all 0.4s; position: relative; overflow: hidden;
+        }
+        .tool-card:hover { transform: translateY(-8px); border-color: var(--primary-color); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.5); }
+        .tool-card h4 { margin: 0 0 15px 0; color: var(--text-main); font-size: 22px; }
+        .tool-card p { color: var(--text-muted); font-size: 15px; line-height: 1.7; margin: 0; min-height: 75px; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+        .tag { padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        .tag.study { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+        .tag.programming { background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
+        .tag.images { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236,72,153,0.3); }
+        .tag.productivity { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px); z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            width: 90%; max-width: 450px; border-radius: 24px; padding: 35px;
+            position: relative; transform: translateY(30px); transition: all 0.4s;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .close-btn {
+            position: absolute; top: 20px; inset-inline-end: 25px;
+            background: none; border: none; color: var(--text-muted); font-size: 26px; cursor: pointer;
+        }
+        .close-btn:hover { color: var(--secondary-color); }
+        .social-btn {
+            background: #ffffff; color: #1f2937; border: none; width: 100%; padding: 12px;
+            border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;
+        }
+        .divider { text-align: center; color: var(--text-muted); font-size: 13px; margin: 15px 0; position: relative; }
+        .divider::before, .divider::after { content: ''; position: absolute; top: 50%; width: 38%; height: 1px; background: var(--border-color); }
+        .divider::before { right: 0; } .divider::after { left: 0; }
+        .input-group { margin-bottom: 12px; }
+        .input-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
+        .input-field {
+            width: 100%; padding: 11px; background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-main); outline: none; font-size: 14px;
+        }
+        .input-field:focus { border-color: var(--primary-color); }
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%);
+            color: white; border: none; width: 100%; padding: 12px; border-radius: 12px;
+            font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px;
+        }
+        .toggle-form { text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); }
+        .toggle-form span { color: var(--primary-color); cursor: pointer; font-weight: bold; }
+
         /* ----- تعديلات شاشات الجوال ----- */
         @media (max-width: 768px) {
             header { padding: 0 15px; }
             .header-right { gap: 10px; }
             .header-title { font-size: 15px; }
-            .header-subtitle { display: none; } /* إخفاء النص الفرعي لتوفير مساحة */
+            .header-subtitle { display: none; }
             .header-left { gap: 5px; }
             .about-link-btn { padding: 6px 10px; font-size: 11px; border-radius: 15px; white-space: nowrap; }
             #menu-toggle { font-size: 24px; padding: 5px; }
@@ -11,3 +139,198 @@
             .search-input { font-size: 15px; padding: 15px 20px; }
             .tools-grid { gap: 20px; }
         }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-right">
+            <button id="menu-toggle">☰</button>
+            <div class="header-title-container">
+                <div class="header-title">دليل الذكاء الاصطناعي الشامل</div>
+                <div class="header-subtitle">بوابتك لأفضل أدوات الذكاء الاصطناعي</div>
+            </div>
+        </div>
+        <div class="header-left" id="user-auth-area">
+            <button class="about-link-btn" id="open-login-modal">تسجيل الدخول</button>
+            <button class="about-link-btn" id="open-about-modal">عن الموقع</button>
+        </div>
+    </header>
+    <div id="sidebar">
+        <h3 style="margin-top:0; margin-bottom: 25px; font-size: 20px;">التصنيفات</h3>
+        <ul class="category-list" id="filter-list">
+            <li class="active" data-filter="all">الكل</li>
+            <li data-filter="study">دراسة وبحث</li>
+            <li data-filter="productivity">إنتاجية ونصوص</li>
+            <li data-filter="programming">برمجة ومطورين</li>
+            <li data-filter="images">صور وبصريات</li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="search-container">
+            <input type="text" id="search-bar" class="search-input" placeholder="ابحث عن ChatGPT، Claude، Midjourney...">
+        </div>
+        
+        <div class="tools-grid" id="tools-container">
+            <div class="tool-card" data-category="productivity programming images">
+                <h4>ChatGPT</h4>
+                <p>المساعد الأشهر للبرمجة، وتوليد النصوص، وحل المشكلات اليومية والدراسية.</p>
+                <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag programming">برمجة</span></div>
+            </div>
+            <div class="tool-card" data-category="study productivity programming">
+                <h4>Claude AI</h4>
+                <p>مساعد ذكي متطور جداً من Anthropic، يتميز بتحليل النصوص الضخمة والبرمجة.</p>
+                <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag programming">برمجة</span></div>
+            </div>
+            <div class="tool-card" data-category="study productivity">
+                <h4>Google NotebookLM</h4>
+                <p>مساعد ذكي من قوقل للطلاب والباحثين لتلخيص الملفات وتحويلها لملاحظات صوتية.</p>
+                <div class="tag-container"><span class="tag study">دراسة وبحث</span><span class="tag productivity">إنتاجية</span></div>
+            </div>
+            <div class="tool-card" data-category="images productivity">
+                <h4>Midjourney</h4>
+                <p>أداة قوية جداً لتوليد الصور بالذكاء الاصطناعي بدقة عالية وتفاصيل احترافية.</p>
+                <div class="tag-container"><span class="tag images">صور وبصريات</span><span class="tag productivity">إنتاجية</span></div>
+            </div>
+            <div class="tool-card" data-category="programming productivity">
+                <h4>GitHub Copilot</h4>
+                <p>مساعد برمجي متقدم يكتب الكود معك ويسرع عملية التطوير بشكل كبير.</p>
+                <div class="tag-container"><span class="tag programming">برمجة</span><span class="tag productivity">إنتاجية</span></div>
+            </div>
+            <div class="tool-card" data-category="study productivity">
+                <h4>Perplexity AI</h4>
+                <p>محرك بحث يعمل بالذكاء الاصطناعي، يقدم إجابات دقيقة مع المصادر الموثوقة.</p>
+                <div class="tag-container"><span class="tag study">دراسة وبحث</span><span class="tag productivity">إنتاجية</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal-content">
+            <button class="close-btn" id="close-login-modal">&times;</button>
+            <h2 style="margin-top:0; text-align:center; font-size:22px;" id="auth-modal-title">تسجيل الدخول</h2>
+            <button class="social-btn" id="google-login">
+                <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.14C3.15 21.32 7.23 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.62H1.18C.43 8.13 0 9.87 0 12s.43 3.87 1.18 5.38l4.09-3.14z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.23 0 3.15 2.68 1.18 6.62l4.09 3.14c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+                متابعة بواسطة Google
+            </button>
+            <div class="divider">أو بالطريقة العادية</div>
+            <form id="email-auth-form">
+                <div class="input-group" id="name-group" style="display: none;">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="full-name" class="input-field" placeholder="ادخل اسمك">
+                </div>
+                <div class="input-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="email" class="input-field" required placeholder="name@example.com">
+                </div>
+                <div class="input-group">
+                    <label>كلمة المرور (6 خانات على الأقل)</label>
+                    <input type="password" id="password" class="input-field" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="submit-btn" id="submit-action-btn">دخول</button>
+            </form>
+            <div class="toggle-form">
+                <span id="toggle-text">ليس لديك حساب؟ سجل الآن</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="about-modal">
+        <div class="modal-content">
+            <button class="close-btn" id="close-about-modal">&times;</button>
+            <h2>عن المنصة</h2>
+            <p style="color:var(--text-muted); line-height:1.7;">هذا الموقع دليل متكامل لأبرز أدوات الذكاء الاصطناعي، مصمم لمساعدة الطلاب والمطورين.</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBILHh_7OlyiM4EfV1Cw0y2QEhAZgrIaKw",
+            authDomain: "ai-directory-a1650.firebaseapp.com",
+            projectId: "ai-directory-a1650",
+            storageBucket: "ai-directory-a1650.firebasestorage.app",
+            messagingSenderId: "1097261050060",
+            appId: "1:1097261050060:web:2ebfab4c850b7be266fa69",
+            measurementId: "G-PSM5Y3YBKT"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const loginModal = document.getElementById('login-modal');
+        const openLoginBtn = document.getElementById('open-login-modal');
+        const closeLoginBtn = document.getElementById('close-login-modal');
+        const aboutModal = document.getElementById('about-modal');
+        const openAboutBtn = document.getElementById('open-about-modal');
+        const closeAboutBtn = document.getElementById('close-about-modal');
+        const userAuthArea = document.getElementById('user-auth-area');
+        let toolCards = document.querySelectorAll('.tool-card');
+
+        document.addEventListener('click', (e) => {
+            if (sidebar.classList.contains('open-sidebar') && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                sidebar.classList.remove('open-sidebar');
+            }
+        });
+
+        menuToggle.addEventListener('click', () => sidebar.classList.toggle('open-sidebar'));
+        
+        if(openLoginBtn) openLoginBtn.addEventListener('click', () => loginModal.classList.add('active'));
+        if(closeLoginBtn) closeLoginBtn.addEventListener('click', () => loginModal.classList.remove('active'));
+        if(openAboutBtn) openAboutBtn.addEventListener('click', () => aboutModal.classList.add('active'));
+        if(closeAboutBtn) closeAboutBtn.addEventListener('click', () => aboutModal.classList.remove('active'));
+
+        const filterItems = document.querySelectorAll('#filter-list li');
+        filterItems.forEach(item => {
+            item.addEventListener('click', () => {
+                filterItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                const filter = item.getAttribute('data-filter');
+                toolCards = document.querySelectorAll('.tool-card');
+                toolCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                if (window.innerWidth <= 768) sidebar.classList.remove('open-sidebar');
+            });
+        });
+
+        const searchBar = document.getElementById('search-bar');
+        if (searchBar) {
+            searchBar.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                toolCards = document.querySelectorAll('.tool-card');
+                toolCards.forEach(card => {
+                    const text = card.innerText.toLowerCase();
+                    card.style.display = text.includes(term) ? 'block' : 'none';
+                });
+            });
+        }
+
+        setPersistence(auth, browserLocalPersistence).then(() => {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    loginModal.classList.remove('active');
+                    const displayName = user.displayName || user.email.split('@')[0];
+                    userAuthArea.innerHTML = `
+                        <span style="color: #4ade80; font-weight: bold; font-size: 14px; margin-left: 10px;">${displayName}</span>
+                        <button class="about-link-btn" id="logout-btn" style="border-color: #ef4444; color: #f87171;">خروج</button>
+                        <button class="about-link-btn" id="open-about-modal-logged">عن الموقع</button>
+                    `;
+                    document.getElementById('logout-btn').addEventListener('click', () => {
+                        signOut(auth).then(() => { window.location.reload(); });
+                    });
+                    document.getElementById('open-about-modal-logged').addEventListener('click', () => aboutModal.classList.add('active'));
+                }
+            });
+        });
+
+        let isSignUp = false;
+        const authModalTitle = document.getElementById('auth-modal-title');
+        const nameGroup = document.getElementById('name-group');
+        const submitBtn = document.getElementById('submit-action-btn');
+        const toggleText = document.getElementById('toggle-tex

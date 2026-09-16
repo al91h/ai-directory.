@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -17,12 +17,12 @@
             --sidebar-width: 280px;
             --header-height: 80px;
         }
-
+ 
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; -webkit-tap-highlight-color: transparent; }
         *:focus-visible { outline: 2px solid var(--primary-color); }
         body { margin: 0; background-color: var(--bg-color); overflow-x: hidden; color: var(--text-main); }
         body.no-scroll { overflow: hidden; height: 100%; }
-
+ 
         header {
             display: flex; align-items: center; justify-content: space-between;
             height: var(--header-height); padding: 0 30px;
@@ -30,15 +30,15 @@
             position: fixed; width: 100%; top: 0; z-index: 1002;
             border-bottom: 1px solid var(--border-color);
         }
-
+ 
         .header-right { display: flex; align-items: center; gap: 20px; }
         .header-left { display: flex; align-items: center; gap: 10px; }
-
+ 
         #menu-toggle {
             background: none; border: none; cursor: pointer; padding: 10px;
             font-size: 28px; color: var(--text-main); display: flex; align-items: center; justify-content: center;
         }
-
+ 
         .header-title-container { display: flex; flex-direction: column; }
         .header-title {
             font-size: 20px; font-weight: 800;
@@ -46,14 +46,14 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .header-subtitle { font-size: 11px; color: var(--text-muted); }
-
+ 
         .about-link-btn {
             background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
             color: var(--text-main); padding: 8px 16px; border-radius: 20px; font-size: 13px;
             cursor: pointer; text-decoration: none; transition: all 0.3s; display: inline-block;
         }
         .about-link-btn:hover { background: var(--primary-color); border-color: var(--primary-color); }
-
+ 
         #sidebar {
             width: var(--sidebar-width); height: 100vh; background: var(--card-bg);
             position: fixed; top: 0; inset-inline-start: calc(var(--sidebar-width) * -1);
@@ -63,7 +63,7 @@
             overflow-y: auto;
         }
         #sidebar.open-sidebar { inset-inline-start: 0; }
-
+ 
         .category-list { list-style: none; padding: 0; margin: 0; }
         .category-list li {
             padding: 16px 20px; color: var(--text-muted); cursor: pointer;
@@ -74,16 +74,16 @@
             background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%);
             color: white; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
         }
-
+ 
         .sidebar-footer-links {
             margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);
             display: flex; flex-direction: column; gap: 12px;
         }
         .sidebar-footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
         .sidebar-footer-links a:hover { color: var(--primary-color); }
-
+ 
         .main-content { margin-top: var(--header-height); padding: 40px; min-height: 100vh; }
-
+ 
         .search-container { text-align: center; margin-bottom: 30px; }
         .search-input {
             width: 100%; max-width: 650px; padding: 20px 25px; font-size: 18px;
@@ -91,16 +91,16 @@
             background: var(--card-bg); color: var(--text-main); transition: all 0.3s;
         }
         .search-input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15); }
-
+ 
         .smart-guide-btn {
             display: inline-block; margin-top: 15px; padding: 10px 25px; background: linear-gradient(45deg, #10b981, #059669);
             color: white; border: none; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer;
             box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2); transition: all 0.3s;
         }
         .smart-guide-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); }
-
+ 
         .no-results { text-align: center; color: var(--text-muted); padding: 60px 20px; display: none; }
-
+ 
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 35px; margin-bottom: 80px; }
         .tool-card {
             background: var(--card-bg); padding: 30px; border-radius: 20px;
@@ -110,34 +110,34 @@
         .tool-card:hover { transform: translateY(-8px); border-color: var(--primary-color); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.5); }
         .tool-card h4 { margin: 0 0 10px 0; color: var(--text-main); font-size: 22px; }
         .tool-card p { color: var(--text-muted); font-size: 14px; line-height: 1.7; margin: 0 0 15px 0; flex-grow: 1; }
-
+ 
         .honest-review {
             background: rgba(255,255,255,0.02); border-right: 3px solid var(--secondary-color);
             padding: 10px 15px; font-size: 13px; color: #d1d5db; border-radius: 4px; margin-bottom: 15px;
         }
         .honest-review span { font-weight: bold; color: var(--secondary-color); }
-
+ 
         .prompt-btn {
             background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3);
             color: #818cf8; padding: 8px; border-radius: 10px; font-size: 12px; font-weight: bold;
             cursor: pointer; width: 100%; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
         .prompt-btn:hover { background: rgba(99, 102, 241, 0.2); }
-
+ 
         .tag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
         .tag { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
         .tag.study { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
         .tag.programming { background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
         .tag.images { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236,72,153,0.3); }
         .tag.productivity { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
-
+ 
         footer.site-footer {
             border-top: 1px solid var(--border-color); padding: 30px 40px; text-align: center;
             color: var(--text-muted); font-size: 13px;
         }
         footer.site-footer a { color: var(--text-muted); margin: 0 10px; text-decoration: none; }
         footer.site-footer a:hover { color: var(--primary-color); }
-
+ 
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px); z-index: 2000;
@@ -157,28 +157,30 @@
             background: none; border: none; color: var(--text-muted); font-size: 26px; cursor: pointer;
         }
         .close-btn:hover { color: var(--secondary-color); }
-
+ 
         .divider { text-align: center; color: var(--text-muted); font-size: 13px; margin: 15px 0; position: relative; }
         .divider::before, .divider::after { content: ''; position: absolute; top: 50%; width: 38%; height: 1px; background: var(--border-color); }
         .divider::before { right: 0; } .divider::after { left: 0; }
-
+ 
         .prompt-box { background: rgba(255,255,255,0.03); border: 1px dashed var(--border-color); padding: 15px 45px 15px 15px; border-radius: 10px; margin-bottom: 12px; font-size: 14px; position: relative; line-height: 1.6; }
         .prompt-editable {
             color: #e5e7eb; outline: none; cursor: text; white-space: pre-wrap; word-break: break-word;
             border-radius: 6px; padding: 2px 4px; margin: -2px -4px; transition: background 0.2s;
+            width: 100%; background: transparent; border: none; resize: none; overflow: hidden;
+            font-family: inherit; font-size: 14px; line-height: 1.6; direction: rtl;
         }
         .prompt-editable:focus { background: rgba(99, 102, 241, 0.08); box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.4); }
         .prompt-edit-hint { display: block; font-size: 11px; color: var(--text-muted); margin-top: 8px; }
         .copy-btn { position: absolute; left: 10px; top: 10px; background: var(--primary-color); color: white; border: none; border-radius: 5px; font-size: 11px; padding: 4px 8px; cursor: pointer; }
         .copy-btn.copied { background: #10b981; }
-
+ 
         .quiz-option {
             display: block; width: 100%; padding: 15px; margin-bottom: 10px; background: rgba(255,255,255,0.05);
             border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-main); cursor: pointer;
             text-align: right; transition: 0.3s; font-size: 14px;
         }
         .quiz-option:hover { background: rgba(99, 102, 241, 0.1); border-color: var(--primary-color); }
-
+ 
         .social-btn, .submit-btn { width: 100%; padding: 12px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; }
         .social-btn { background: #ffffff; color: #1f2937; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; }
         .submit-btn { background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%); color: white; margin-top: 10px; }
@@ -188,7 +190,7 @@
         .toggle-form { text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); cursor: pointer; }
         .toggle-form span { color: var(--primary-color); font-weight: bold; }
         .auth-error { color: #f87171; font-size: 13px; text-align: center; margin-top: 10px; min-height: 16px; }
-
+ 
         @media (max-width: 768px) {
             header { padding: 0 15px; }
             .header-right { gap: 10px; }
@@ -216,7 +218,7 @@
             <button class="about-link-btn" id="open-about-modal">عن الموقع</button>
         </div>
     </header>
-
+ 
     <div id="sidebar">
         <h3 style="margin-top:0; margin-bottom: 25px; font-size: 20px;">التصنيفات</h3>
         <ul class="category-list" id="filter-list">
@@ -231,16 +233,16 @@
             <a href="contact.html">اتصل بنا</a>
         </div>
     </div>
-
+ 
     <div class="main-content">
         <div class="search-container">
             <input type="text" id="search-bar" class="search-input" placeholder="ابحث عن أدوات، مهارات، لغات برمجة...">
             <br>
             <button class="smart-guide-btn" id="open-quiz-modal">✨ محتار شو تختار؟ جرب الدليل الذكي</button>
         </div>
-
+ 
         <div class="tools-grid" id="tools-container">
-
+ 
             <div class="tool-card" data-category="productivity programming images">
                 <h4>ChatGPT</h4>
                 <p>المساعد الأشهر عالمياً من OpenAI. ممتاز في المحادثة، البرمجة، وتوليد الأفكار.</p>
@@ -248,7 +250,7 @@
                 <button class="prompt-btn" onclick="openPrompts('chatgpt')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag programming">برمجة</span></div>
             </div>
-
+ 
             <div class="tool-card" data-category="study productivity programming">
                 <h4>Claude AI</h4>
                 <p>مساعد ذكي متطور من Anthropic، يتميز بفهم النصوص الطويلة جداً وكتابة أكواد دقيقة.</p>
@@ -256,7 +258,7 @@
                 <button class="prompt-btn" onclick="openPrompts('claude')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag programming">برمجة</span></div>
             </div>
-
+ 
             <div class="tool-card" data-category="study productivity">
                 <h4>Google NotebookLM</h4>
                 <p>يلخص المستندات ومقاطع الفيديو ويحوّلها إلى ملاحظات صوتية أو خرائط ذهنية.</p>
@@ -264,7 +266,7 @@
                 <button class="prompt-btn" onclick="openPrompts('notebook')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag study">دراسة وبحث</span><span class="tag productivity">إنتاجية</span></div>
             </div>
-
+ 
             <div class="tool-card" data-category="study">
                 <h4>Perplexity AI</h4>
                 <p>محرك بحث ذكي يجمع إجابات دقيقة من مصادر متعددة على الإنترنت مع ذكر المراجع.</p>
@@ -272,7 +274,7 @@
                 <button class="prompt-btn" onclick="openPrompts('perplexity')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag study">دراسة وبحث</span></div>
             </div>
-
+ 
             <div class="tool-card" data-category="programming productivity">
                 <h4>Blackbox AI</h4>
                 <p>ذكاء اصطناعي مخصص للمبرمجين، يبحث عن الأكواد ويحل المشاكل البرمجية مباشرة.</p>
@@ -280,7 +282,7 @@
                 <button class="prompt-btn" onclick="openPrompts('blackbox')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag programming">برمجة</span></div>
             </div>
-
+ 
             <div class="tool-card" data-category="images productivity">
                 <h4>Opus Clip</h4>
                 <p>أداة لتحويل الفيديوهات الطويلة إلى مقاطع قصيرة (Clips) جاهزة للنشر بضغطة زر.</p>
@@ -288,7 +290,7 @@
                 <button class="prompt-btn" onclick="openPrompts('opus')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag images">صناع محتوى</span><span class="tag productivity">إنتاجية</span></div>
             </div>
-
+ 
             <div class="tool-card" data-category="images">
                 <h4>Midjourney</h4>
                 <p>أقوى أدوات توليد الصور الفنية بالذكاء الاصطناعي، تُستخدم عبر Discord لإنتاج أعمال بصرية احترافية.</p>
@@ -296,7 +298,7 @@
                 <button class="prompt-btn" onclick="openPrompts('midjourney')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag images">صور وبصريات</span></div>
             </div>
-
+ 
             <div class="tool-card" data-category="images">
                 <h4>DALL·E 3</h4>
                 <p>أداة توليد صور من OpenAI مدمجة مع ChatGPT، تحول الوصف النصي إلى صورة واقعية أو فنية.</p>
@@ -304,7 +306,7 @@
                 <button class="prompt-btn" onclick="openPrompts('dalle')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag images">صور وبصريات</span></div>
             </div>
-
+ 
             <div class="tool-card" data-category="programming">
                 <h4>GitHub Copilot</h4>
                 <p>مساعد برمجي يعمل داخل محررات الأكواد مثل VS Code، يقترح أسطر وأكواد كاملة أثناء الكتابة.</p>
@@ -312,11 +314,502 @@
                 <button class="prompt-btn" onclick="openPrompts('copilot')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag programming">برمجة</span></div>
             </div>
-
+ 
             <div class="tool-card" data-category="programming productivity">
                 <h4>Cursor</h4>
                 <p>محرر أكواد مبني بالكامل حول الذكاء الاصطناعي، يتيح تعديل مشاريع كاملة عبر أوامر نصية.</p>
                 <div class="honest-review"><span>الخلاصة:</span> مناسب أكثر لمن عنده مشروع متوسط أو كبير، مو للسكربتات الصغيرة البسيطة.</div>
                 <button class="prompt-btn" onclick="openPrompts('cursor')">📝 أوامر جاهزة (Prompts)</button>
                 <div class="tag-container"><span class="tag programming">برمجة</span><span class="tag productivity">إنتاجية</span></div>
-      
+            </div>
+ 
+            <div class="tool-card" data-category="productivity">
+                <h4>Notion AI</h4>
+                <p>إضافة ذكاء اصطناعي داخل تطبيق Notion، تساعد في تلخيص الملاحظات وصياغة النصوص وتنظيم المهام.</p>
+                <div class="honest-review"><span>الخلاصة:</span> قيمتها الحقيقية تظهر بس لو أصلاً مستخدم Notion بشكل يومي.</div>
+                <button class="prompt-btn" onclick="openPrompts('notion')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag productivity">إنتاجية</span></div>
+            </div>
+ 
+            <div class="tool-card" data-category="images">
+                <h4>Canva AI (Magic Studio)</h4>
+                <p>مجموعة أدوات ذكاء اصطناعي داخل Canva لتصميم الصور والمنشورات وتوليد الخلفيات تلقائياً.</p>
+                <div class="honest-review"><span>الخلاصة:</span> أسهل خيار لمن ما عنده خبرة تصميم أبداً وبدو نتيجة سريعة ومحترمة.</div>
+                <button class="prompt-btn" onclick="openPrompts('canva')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag images">صور وبصريات</span></div>
+            </div>
+ 
+            <div class="tool-card" data-category="productivity study">
+                <h4>Grammarly</h4>
+                <p>أداة تدقيق لغوي ذكية للغة الإنجليزية، تصحح الأخطاء الإملائية والنحوية وتحسّن أسلوب الكتابة.</p>
+                <div class="honest-review"><span>الخلاصة:</span> ضروري لأي شخص بيكتب رسائل أو أبحاث بالإنجليزي بشكل منتظم.</div>
+                <button class="prompt-btn" onclick="openPrompts('grammarly')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag productivity">إنتاجية</span><span class="tag study">دراسة وبحث</span></div>
+            </div>
+ 
+            <div class="tool-card" data-category="study productivity">
+                <h4>Gemini</h4>
+                <p>مساعد قوقل الذكي متعدد الوسائط، يدعم النصوص والصور والفيديو ومتكامل مع خدمات Google.</p>
+                <div class="honest-review"><span>الخلاصة:</span> قوي لو أنت أصلاً مستخدم لخدمات Google (Docs، Gmail، Drive) بشكل يومي.</div>
+                <button class="prompt-btn" onclick="openPrompts('gemini')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag study">دراسة وبحث</span><span class="tag productivity">إنتاجية</span></div>
+            </div>
+ 
+            <div class="tool-card" data-category="images">
+                <h4>Runway</h4>
+                <p>منصة لتوليد وتحرير الفيديو بالذكاء الاصطناعي، تتيح إنشاء مقاطع فيديو كاملة من نص أو صورة.</p>
+                <div class="honest-review"><span>الخلاصة:</span> مذهلة للتجربة والإبداع، بس النسخة المجانية محدودة جداً بعدد المقاطع.</div>
+                <button class="prompt-btn" onclick="openPrompts('runway')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag images">صور وبصريات</span></div>
+            </div>
+ 
+            <div class="tool-card" data-category="productivity">
+                <h4>ElevenLabs</h4>
+                <p>أداة تحويل النص إلى صوت طبيعي باحترافية عالية، تدعم لغات متعددة واستنساخ الأصوات.</p>
+                <div class="honest-review"><span>الخلاصة:</span> جودة الصوت العربي تحسّنت كثير مؤخراً، ممتازة لصناع البودكاست والفيديوهات.</div>
+                <button class="prompt-btn" onclick="openPrompts('elevenlabs')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag productivity">إنتاجية</span></div>
+            </div>
+ 
+            <div class="tool-card" data-category="study">
+                <h4>Consensus</h4>
+                <p>محرك بحث أكاديمي مدعوم بالذكاء الاصطناعي، يستخرج نتائج وخلاصات من الأوراق العلمية مباشرة.</p>
+                <div class="honest-review"><span>الخلاصة:</span> لطلاب الدراسات العليا تحديداً، بيوفر وقت مراجعة الأبحاث بشكل كبير.</div>
+                <button class="prompt-btn" onclick="openPrompts('consensus')">📝 أوامر جاهزة (Prompts)</button>
+                <div class="tag-container"><span class="tag study">دراسة وبحث</span></div>
+            </div>
+ 
+        </div>
+ 
+        <div class="no-results" id="no-results">لا توجد نتائج مطابقة لبحثك 🔍</div>
+    </div>
+ 
+    <footer class="site-footer">
+        <div>© 2026 دليل الذكاء الاصطناعي الشامل. جميع الحقوق محفوظة.</div>
+        <div style="margin-top:10px;">
+            <a href="privacy.html">سياسة الخصوصية</a>
+            <a href="contact.html">اتصل بنا</a>
+        </div>
+    </footer>
+ 
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal-content">
+            <button class="close-btn" id="close-login-modal">&times;</button>
+            <h2 style="margin-top:0; text-align:center; font-size:22px;" id="auth-modal-title">تسجيل الدخول</h2>
+ 
+            <button class="social-btn" id="google-login">
+                <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.14C3.15 21.32 7.23 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.62H1.18C.43 8.13 0 9.87 0 12s.43 3.87 1.18 5.38l4.09-3.14z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.23 0 3.15 2.68 1.18 6.62l4.09 3.14c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+                متابعة بواسطة Google
+            </button>
+ 
+            <div class="divider">أو بالطريقة العادية</div>
+ 
+            <form id="email-auth-form">
+                <div class="input-group" id="name-group" style="display: none;">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="full-name" class="input-field" placeholder="ادخل اسمك">
+                </div>
+                <div class="input-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="email" class="input-field" required placeholder="name@example.com">
+                </div>
+                <div class="input-group">
+                    <label>كلمة المرور (6 خانات على الأقل)</label>
+                    <input type="password" id="password" class="input-field" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="submit-btn" id="submit-action-btn">دخول</button>
+                <div class="auth-error" id="auth-error-msg"></div>
+            </form>
+ 
+            <div class="toggle-form">
+                <span id="toggle-text">ليس لديك حساب؟ سجل الآن</span>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="modal-overlay" id="about-modal">
+        <div class="modal-content">
+            <button class="close-btn" id="close-about-modal">&times;</button>
+            <h2>عن المنصة</h2>
+            <p style="color:var(--text-muted); line-height:1.7;">هذا الموقع دليل متكامل لأبرز أدوات الذكاء الاصطناعي، مصمم لمساعدة الطلاب والمطورين وصنّاع المحتوى على اكتشاف الأداة الأنسب لاحتياجاتهم.</p>
+        </div>
+    </div>
+ 
+    <div class="modal-overlay" id="prompt-modal">
+        <div class="modal-content">
+            <button class="close-btn" id="close-prompt-modal">&times;</button>
+            <h2 style="margin-top:0; color: var(--primary-color);" id="prompt-modal-title">مكتبة الأوامر الجاهزة 📝</h2>
+            <p style="color:var(--text-muted); font-size: 13px; margin-bottom: 20px;">انسخ الأمر وعدّل ما بين الأقواس ليناسب احتياجك.</p>
+            <div id="prompts-list"></div>
+        </div>
+    </div>
+ 
+    <div class="modal-overlay" id="quiz-modal">
+        <div class="modal-content">
+            <button class="close-btn" id="close-quiz-modal">&times;</button>
+            <h2 style="margin-top:0; color: #10b981;">الدليل الذكي 🎯</h2>
+            <p style="color:var(--text-muted); margin-bottom: 20px;">شو أكثر إشي بتحتاج الأداة عشانه اليوم؟</p>
+            <button class="quiz-option" data-filter="programming">💻 حل أخطاء برمجية وكتابة أكواد</button>
+            <button class="quiz-option" data-filter="study">📚 تلخيص دراسة ومراجعة للامتحانات</button>
+            <button class="quiz-option" data-filter="images">🎮 صناعة محتوى، مونتاج وقصقصة (Clips)</button>
+            <button class="quiz-option" data-filter="productivity">⚡ تحسين الإنتاجية وكتابة نصوص</button>
+        </div>
+    </div>
+ 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+ 
+        const firebaseConfig = {
+            apiKey: "AIzaSyBILHh_7OlyiM4EfV1Cw0y2QEhAZgrIaKw",
+            authDomain: "ai-directory-a1650.firebaseapp.com",
+            projectId: "ai-directory-a1650",
+            storageBucket: "ai-directory-a1650.firebasestorage.app",
+            messagingSenderId: "1097261050060",
+            appId: "1:1097261050060:web:2ebfab4c850b7be266fa69",
+            measurementId: "G-PSM5Y3YBKT"
+        };
+ 
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+ 
+        const loginModal = document.getElementById('login-modal');
+        const userAuthArea = document.getElementById('user-auth-area');
+        const googleLoginBtn = document.getElementById('google-login');
+        const authErrorMsg = document.getElementById('auth-error-msg');
+        const aboutModal = document.getElementById('about-modal');
+ 
+        function renderLoggedInUser(user) {
+            loginModal.classList.remove('active');
+            const displayName = user.displayName || (user.email ? user.email.split('@')[0] : 'مستخدم');
+            userAuthArea.innerHTML = `
+                <span style="color: #4ade80; font-weight: bold; font-size: 14px; margin-left: 10px;">مرحباً، ${displayName}</span>
+                <button class="about-link-btn" id="logout-btn" style="border-color: #ef4444; color: #f87171;">خروج</button>
+                <button class="about-link-btn" id="open-about-modal-logged">عن الموقع</button>
+            `;
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                signOut(auth).then(() => { window.location.reload(); });
+            });
+            document.getElementById('open-about-modal-logged').addEventListener('click', () => aboutModal.classList.add('active'));
+        }
+ 
+        setPersistence(auth, browserLocalPersistence).then(() => {
+            onAuthStateChanged(auth, (user) => {
+                if (user) renderLoggedInUser(user);
+            });
+        });
+ 
+        getRedirectResult(auth).catch((error) => {
+            console.error("خطأ في تسجيل الدخول: ", error.message);
+            authErrorMsg.innerText = "حدث خطأ أثناء تسجيل الدخول، حاول مرة أخرى.";
+        });
+ 
+        googleLoginBtn.addEventListener('click', () => {
+            const provider = new GoogleAuthProvider();
+            provider.setCustomParameters({ prompt: 'select_account' });
+            signInWithRedirect(auth, provider);
+        });
+ 
+        let isSignUp = false;
+        const authModalTitle = document.getElementById('auth-modal-title');
+        const nameGroup = document.getElementById('name-group');
+        const submitBtn = document.getElementById('submit-action-btn');
+        const toggleText = document.getElementById('toggle-text');
+        const authForm = document.getElementById('email-auth-form');
+ 
+        toggleText.addEventListener('click', () => {
+            isSignUp = !isSignUp;
+            authErrorMsg.innerText = '';
+            if (isSignUp) {
+                authModalTitle.innerText = "إنشاء حساب جديد";
+                nameGroup.style.display = 'block';
+                submitBtn.innerText = "تسجيل";
+                toggleText.innerText = "لديك حساب بالفعل؟ سجل دخولك";
+            } else {
+                authModalTitle.innerText = "تسجيل الدخول";
+                nameGroup.style.display = 'none';
+                submitBtn.innerText = "دخول";
+                toggleText.innerText = "ليس لديك حساب؟ سجل الآن";
+            }
+        });
+ 
+        function friendlyAuthError(code) {
+            switch (code) {
+                case 'auth/email-already-in-use': return 'هذا البريد الإلكتروني مستخدم بالفعل.';
+                case 'auth/invalid-email': return 'صيغة البريد الإلكتروني غير صحيحة.';
+                case 'auth/weak-password': return 'كلمة المرور ضعيفة، يجب أن تكون 6 خانات على الأقل.';
+                case 'auth/user-not-found':
+                case 'auth/wrong-password':
+                case 'auth/invalid-credential': return 'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+                default: return 'حدث خطأ، حاول مرة أخرى.';
+            }
+        }
+ 
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            authErrorMsg.innerText = '';
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const name = document.getElementById('full-name').value;
+ 
+            if (isSignUp) {
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => updateProfile(userCredential.user, { displayName: name }).then(() => renderLoggedInUser(userCredential.user)))
+                    .catch((error) => { authErrorMsg.innerText = friendlyAuthError(error.code); });
+            } else {
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => renderLoggedInUser(userCredential.user))
+                    .catch((error) => { authErrorMsg.innerText = friendlyAuthError(error.code); });
+            }
+        });
+    </script>
+ 
+    <script>
+        // ---------- عناصر عامة ----------
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const aboutModal2 = document.getElementById('about-modal');
+        const openLoginBtn = document.getElementById('open-login-modal');
+        const loginModal2 = document.getElementById('login-modal');
+        const closeLoginBtn = document.getElementById('close-login-modal');
+        const openAboutBtn = document.getElementById('open-about-modal');
+        const closeAboutBtn = document.getElementById('close-about-modal');
+        const quizModal = document.getElementById('quiz-modal');
+        const promptModal = document.getElementById('prompt-modal');
+        const toolCards = document.querySelectorAll('.tool-card');
+        const filterItems = document.querySelectorAll('#filter-list li');
+        const noResults = document.getElementById('no-results');
+ 
+        // ---------- قفل/فتح تمرير الصفحة الخلفية ----------
+        function updateScrollLock() {
+            const anyOpen = sidebar.classList.contains('open-sidebar') ||
+                [loginModal2, aboutModal2, quizModal, promptModal].some(m => m.classList.contains('active'));
+            document.body.classList.toggle('no-scroll', anyOpen);
+        }
+ 
+        function openOverlay(el) { el.classList.add('active'); updateScrollLock(); }
+        function closeOverlay(el) { el.classList.remove('active'); updateScrollLock(); }
+ 
+        // إغلاق الـ Sidebar عند الضغط خارجه
+        document.addEventListener('click', (e) => {
+            if (sidebar.classList.contains('open-sidebar') && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                sidebar.classList.remove('open-sidebar');
+                updateScrollLock();
+            }
+        });
+        menuToggle.addEventListener('click', () => { sidebar.classList.toggle('open-sidebar'); updateScrollLock(); });
+ 
+        // فتح/إغلاق النوافذ المنبثقة
+        if (openLoginBtn) openLoginBtn.addEventListener('click', () => openOverlay(loginModal2));
+        closeLoginBtn.addEventListener('click', () => closeOverlay(loginModal2));
+        openAboutBtn.addEventListener('click', () => openOverlay(aboutModal2));
+        closeAboutBtn.addEventListener('click', () => closeOverlay(aboutModal2));
+        document.getElementById('open-quiz-modal').addEventListener('click', () => openOverlay(quizModal));
+        document.getElementById('close-quiz-modal').addEventListener('click', () => closeOverlay(quizModal));
+        document.getElementById('close-prompt-modal').addEventListener('click', () => closeOverlay(promptModal));
+ 
+        // إغلاق أي نافذة منبثقة بالنقر على الخلفية الداكنة نفسها (خارج البطاقة البيضاء)
+        [loginModal2, aboutModal2, quizModal, promptModal].forEach(overlay => {
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeOverlay(overlay); });
+        });
+ 
+        // ---------- الفلترة حسب التصنيف ----------
+        function applyFilter(filter) {
+            filterItems.forEach(i => i.classList.toggle('active', i.getAttribute('data-filter') === filter));
+            let visibleCount = 0;
+            toolCards.forEach(card => {
+                const match = filter === 'all' || card.getAttribute('data-category').includes(filter);
+                card.style.display = match ? 'flex' : 'none';
+                if (match) visibleCount++;
+            });
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+            if (window.innerWidth <= 768) sidebar.classList.remove('open-sidebar');
+        }
+ 
+        filterItems.forEach(item => {
+            item.addEventListener('click', () => applyFilter(item.getAttribute('data-filter')));
+        });
+ 
+        // ---------- الدليل الذكي (Quiz) ----------
+        document.querySelectorAll('.quiz-option').forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyFilter(btn.getAttribute('data-filter'));
+                closeOverlay(quizModal);
+                document.getElementById('tools-container').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+ 
+        // ---------- شريط البحث ----------
+        const searchBar = document.getElementById('search-bar');
+        searchBar.addEventListener('input', (e) => {
+            const term = e.target.value.trim().toLowerCase();
+            let visibleCount = 0;
+            filterItems.forEach(i => i.classList.remove('active'));
+            toolCards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                const match = text.includes(term);
+                card.style.display = match ? 'flex' : 'none';
+                if (match) visibleCount++;
+            });
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        });
+ 
+        // ---------- مكتبة الأوامر الجاهزة ----------
+        const prompts = {
+            chatgpt: [
+                "لخص لي هذا النص في 5 نقاط رئيسية مع أمثلة توضيحية: [الصق النص هنا]",
+                "اشرح لي مفهوم [الموضوع] بطريقة مبسطة كأنك تشرح لطالب في الثانوية"
+            ],
+            claude: [
+                "راجع الكود التالي وأخبرني بالأخطاء المحتملة واقترح تحسينات: [الصق الكود هنا]",
+                "اكتب لي صفحة HTML/CSS كاملة لـ [وصف الصفحة] بتصميم عصري"
+            ],
+            notebook: [
+                "ارفع محاضرة أو ملف PDF واطلب: لخص هذا الملف في نقاط رئيسية مع أسئلة متوقعة بالامتحان",
+                "حوّل هذا الملف إلى ملخص صوتي (Audio Overview) لمراجعته أثناء التنقل"
+            ],
+            perplexity: [
+                "ابحث لي عن آخر التطورات في [موضوع] مع ذكر المصادر الموثوقة",
+                "قارن بين [الشيء الأول] و [الشيء الثاني] بالاعتماد على مصادر حديثة"
+            ],
+            blackbox: [
+                "اشرح لي سبب هذا الخطأ في الكود وكيف أصلحه: [الصق رسالة الخطأ والكود]",
+                "حوّل هذا الكود من [لغة برمجة] إلى [لغة برمجة أخرى]"
+            ],
+            opus: [
+                "ارفع فيديو طويل واطلب: استخرج أفضل 5 مقاطع قصيرة صالحة للنشر على تيك توك من هذا الفيديو",
+                "أضف ترجمة (Captions) تلقائية جذابة لهذا المقطع القصير"
+            ],
+            midjourney: [
+                "a [وصف المشهد], cinematic lighting, ultra detailed, 4k --ar 16:9",
+                "portrait of [وصف الشخصية], digital art style, vibrant colors --v 6"
+            ],
+            dalle: [
+                "ارسم لي صورة لـ [وصف المشهد] بأسلوب فني واقعي وألوان دافئة",
+                "أنشئ شعار (Logo) بسيط لمشروع اسمه [اسم المشروع] بألوان [الألوان المفضلة]"
+            ],
+            copilot: [
+                "// اكتب دالة تقوم بـ [وصف الوظيفة المطلوبة] بلغة [اسم اللغة]",
+                "// أضف تعليقات توضيحية لهذا الكود واشرح كل خطوة"
+            ],
+            cursor: [
+                "أعد هيكلة (Refactor) هذا المشروع لفصل الواجهة عن منطق البيانات",
+                "أضف ميزة [وصف الميزة] لهذا المشروع مع الحفاظ على نفس أسلوب الكود الحالي"
+            ],
+            notion: [
+                "لخص هذه الصفحة في نقاط رئيسية وأضف قائمة مهام قابلة للتنفيذ",
+                "حوّل هذه الملاحظات العشوائية إلى خطة عمل أسبوعية منظمة"
+            ],
+            canva: [
+                "أنشئ منشور انستقرام بعنوان [العنوان] بألوان [الألوان] بأسلوب عصري وبسيط",
+                "ولّد خلفية مجردة (Abstract) بألوان هادئة لعرض تقديمي عن [الموضوع]"
+            ],
+            grammarly: [
+                "راجع هذا النص الإنجليزي من ناحية القواعد والأسلوب: [الصق النص هنا]",
+                "أعد صياغة هذه الرسالة لتكون أكثر رسمية واحترافية"
+            ],
+            gemini: [
+                "لخص لي هذا المستند من Google Docs في نقاط رئيسية",
+                "اقترح ردوداً مناسبة على هذا الإيميل: [الصق نص الإيميل]"
+            ],
+            runway: [
+                "حوّل هذه الصورة الثابتة إلى فيديو قصير بحركة كاميرا بطيئة وسينمائية",
+                "أنشئ فيديو مدته 5 ثوانٍ لمشهد: [وصف المشهد]"
+            ],
+            elevenlabs: [
+                "حوّل هذا النص إلى تعليق صوتي احترافي بنبرة هادئة وواثقة: [الصق النص هنا]",
+                "أنشئ تعليقاً صوتياً حماسياً لإعلان قصير عن [المنتج/الخدمة]"
+            ],
+            consensus: [
+                "ما هي أحدث الدراسات العلمية حول [الموضوع البحثي]؟",
+                "لخص لي الإجماع العلمي حول تأثير [عامل معين] على [نتيجة معينة]"
+            ]
+        };
+ 
+        const toolTitles = {
+            chatgpt: 'ChatGPT', claude: 'Claude AI', notebook: 'Google NotebookLM', perplexity: 'Perplexity AI',
+            blackbox: 'Blackbox AI', opus: 'Opus Clip', midjourney: 'Midjourney', dalle: 'DALL·E 3',
+            copilot: 'GitHub Copilot', cursor: 'Cursor', notion: 'Notion AI', canva: 'Canva AI',
+            grammarly: 'Grammarly', gemini: 'Gemini', runway: 'Runway', elevenlabs: 'ElevenLabs', consensus: 'Consensus'
+        };
+ 
+        function openPrompts(toolId) {
+            const list = prompts[toolId] || [];
+            const container = document.getElementById('prompts-list');
+            document.getElementById('prompt-modal-title').innerText = `أوامر جاهزة لـ ${toolTitles[toolId] || ''} 📝`;
+            container.innerHTML = list.map((p, idx) => `
+                <div class="prompt-box">
+                    <textarea class="prompt-editable" spellcheck="false" rows="2" id="prompt-text-${toolId}-${idx}">${p}</textarea>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-text-${toolId}-${idx}', this)">نسخ</button>
+                </div>
+            `).join('') || '<p style="color:var(--text-muted);">لا توجد أوامر جاهزة لهذه الأداة بعد.</p>';
+            if (list.length) {
+                container.insertAdjacentHTML('beforeend', '<span class="prompt-edit-hint">💡 تقدر تعدّل النص مباشرة هنا (مثلاً تستبدل الجزء بين الأقواس []) قبل ما تنسخه.</span>');
+            }
+ 
+            container.querySelectorAll('.prompt-editable').forEach(el => {
+                autoGrow(el);
+                el.addEventListener('input', () => autoGrow(el));
+                el.addEventListener('focus', () => selectPlaceholder(el));
+            });
+ 
+            openOverlay(promptModal);
+        }
+ 
+        function autoGrow(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight) + 'px';
+        }
+ 
+        function selectPlaceholder(el) {
+            const text = el.value;
+            const match = text.match(/\[[^\]]*\]/);
+            if (!match) return;
+            const start = match.index;
+            const end = start + match[0].length;
+            el.setSelectionRange(start, end);
+        }
+ 
+        function copyPrompt(elementId, btn) {
+            const text = document.getElementById(elementId).value;
+ 
+            function showCopied() {
+                btn.innerText = 'تم النسخ ✓';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.innerText = 'نسخ'; btn.classList.remove('copied'); }, 1500);
+            }
+ 
+            function fallbackCopy() {
+                // طريقة احتياطية تشتغل حتى لو navigator.clipboard غير متاح
+                // (مثلاً عبر HTTP بدل HTTPS، أو متصفحات قديمة داخل بعض تطبيقات الهاتف)
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.focus();
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    showCopied();
+                } catch (err) {
+                    btn.innerText = 'انسخ يدوياً 👆';
+                    setTimeout(() => { btn.innerText = 'نسخ'; }, 2000);
+                }
+                document.body.removeChild(textarea);
+            }
+ 
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(showCopied).catch(fallbackCopy);
+            } else {
+                fallbackCopy();
+            }
+        }
+ 
+        // إتاحة الدالتين عالمياً لأنهما مستدعاتان من onclick داخل الـ HTML
+        window.openPrompts = openPrompts;
+        window.copyPrompt = copyPrompt;
+    </script>
+</body>
+</html>
+ 
